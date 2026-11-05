@@ -1,0 +1,18 @@
+/target
+/data/raw/*
+/data/processed/*
+/data/cache/*
+!/data/raw/.gitkeep
+!/data/processed/.gitkeep
+!/data/cache/.gitkeep
+.env
+.DS_Store
+/data/bin/
+
+/web/dist/
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example

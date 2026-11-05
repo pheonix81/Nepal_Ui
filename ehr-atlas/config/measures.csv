@@ -1,0 +1,21 @@
+dataset,dataset_id,mode,ccn_column,measure_id_columns,measure_id_literal,measure_name_column,measure_name_literal,value_columns,denominator_column,compared_column,footnote_column,start_column,end_column,notes
+hcahps,dgck-syfz,long,Facility ID,HCAHPS Measure ID,,HCAHPS Question,,Patient Survey Star Rating|HCAHPS Answer Percent|HCAHPS Linear Mean Value,Number of Completed Surveys,,HCAHPS Answer Percent Footnote,Start Date,End Date,"star rating for *_STAR_RATING ids, percent for *_P ids, linear mean for *_LINEAR_SCORE ids; H_STAR_RATING is the summary star"
+hrrp,9n3s-kdb3,long,Facility ID,Measure Name,,,,Excess Readmission Ratio,Number of Discharges,,Footnote,Start Date,End Date,excess readmission ratio (>1 = worse than expected) per HRRP condition
+complications_deaths,ynj2-r877,long,Facility ID,Measure ID,,Measure Name,,Score,Denominator,Compared to National,Footnote,Start Date,End Date,risk-standardized rates
+hac,yq43-i98g,wide,Facility ID,,HAC_PSI90,,PSI 90 Composite Value,PSI 90 Composite Value,,,PSI 90 Composite Value Footnote,PSI 90 Start Date,PSI 90 End Date,
+hac,yq43-i98g,wide,Facility ID,,HAC_CLABSI_SIR,,CLABSI SIR,CLABSI SIR,,,CLABSI SIR Footnote,HAI Measures Start Date,HAI Measures End Date,
+hac,yq43-i98g,wide,Facility ID,,HAC_CAUTI_SIR,,CAUTI SIR,CAUTI SIR,,,CAUTI SIR Footnote,HAI Measures Start Date,HAI Measures End Date,
+hac,yq43-i98g,wide,Facility ID,,HAC_SSI_SIR,,SSI SIR,SSI SIR,,,SSI SIR Footnote,HAI Measures Start Date,HAI Measures End Date,
+hac,yq43-i98g,wide,Facility ID,,HAC_CDI_SIR,,CDI SIR,CDI SIR,,,CDI SIR Footnote,HAI Measures Start Date,HAI Measures End Date,
+hac,yq43-i98g,wide,Facility ID,,HAC_MRSA_SIR,,MRSA SIR,MRSA SIR,,,MRSA SIR Footnote,HAI Measures Start Date,HAI Measures End Date,
+hac,yq43-i98g,wide,Facility ID,,HAC_TOTAL_SCORE,,Total HAC Score,Total HAC Score,,,Total HAC Score Footnote,HAI Measures Start Date,HAI Measures End Date,
+hac,yq43-i98g,wide,Facility ID,,HAC_PAYMENT_REDUCTION,,Payment Reduction,Payment Reduction,,,Payment Reduction Footnote,,,Yes/No in value_raw; value NULL
+hvbp_tps,ypbt-wvdk,wide,Facility ID,,HVBP_TPS,,Total Performance Score,Total Performance Score,,,,,,fiscal year in the file (one FY per release)
+hvbp_tps,ypbt-wvdk,wide,Facility ID,,HVBP_CLINICAL_OUTCOMES,,Unweighted Normalized Clinical Outcomes Domain Score,Unweighted Normalized Clinical Outcomes Domain Score,,,,,,
+hvbp_tps,ypbt-wvdk,wide,Facility ID,,HVBP_PERSON_COMMUNITY,,Unweighted Person And Community Engagement Domain Score,Unweighted Person And Community Engagement Domain Score,,,,,,
+hvbp_tps,ypbt-wvdk,wide,Facility ID,,HVBP_SAFETY,,Unweighted Normalized Safety Domain Score,Unweighted Normalized Safety Domain Score,,,,,,
+hvbp_tps,ypbt-wvdk,wide,Facility ID,,HVBP_EFFICIENCY,,Unweighted Normalized Efficiency And Cost Reduction Domain Score,Unweighted Normalized Efficiency And Cost Reduction Domain Score,,,,,,
+unplanned_visits,632h-zaca,long,Facility ID,Measure ID,,Measure Name,,Score,Denominator,Compared to National,Footnote,Start Date,End Date,Hybrid_HWR (hospital-wide readmission) is entirely 'Not Available' in the Sept 2026 release; READM_30_* condition rates are populated
+timely_effective,yv7e-xc69,long,Facility ID,Measure ID,,Measure Name,,Score,Sample,,Footnote,Start Date,End Date,some scores are categorical text (e.g. ED volume) and stay in value_raw only
+spending_by_claim,nrth-mfg3,long,Facility ID,Period|Claim Type,,,,Avg Spndg Per EP Hospital,,,,Start Date,End Date,average Medicare spending per episode by period and claim type; 'Complete Episode / Total' is the whole episode
+mspb,rrqw-56er,long,Facility ID,Measure ID,,Measure Name,,Score,,,Footnote,Start Date,End Date,MSPB-1 ratio to national median (1.00 = national)

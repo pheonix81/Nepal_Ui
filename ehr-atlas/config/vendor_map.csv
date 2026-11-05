@@ -1,0 +1,267 @@
+developer_name_raw,vendor,vendor_tier,notes
+Epic Systems Corporation,Epic,core_ehr,
+Epic Systems,Epic,core_ehr,alias
+Oracle Health,Oracle Health,core_ehr,formerly Cerner
+Oracle Cerner,Oracle Health,core_ehr,alias
+Cerner Corporation,Oracle Health,core_ehr,alias (pre-2022 CHPL developer name)
+Cerner Health Services,Oracle Health,core_ehr,alias (Siemens Soarian lineage)
+"Medical Information Technology, Inc. (MEDITECH)",MEDITECH,core_ehr,
+MEDITECH,MEDITECH,core_ehr,alias
+"Medical Information Technology, Inc.",MEDITECH,core_ehr,alias
+"TruBridge, Inc.",TruBridge,core_ehr,formerly CPSI / Evident / Healthland / American HealthTech
+"Computer Programs and Systems, Inc.",TruBridge,core_ehr,alias (CPSI)
+CPSI,TruBridge,core_ehr,alias
+"Evident, a CPSI company",TruBridge,core_ehr,alias
+Evident,TruBridge,core_ehr,alias
+Healthland,TruBridge,core_ehr,alias
+MEDHOST,MEDHOST,core_ehr,
+"MEDHOST Cloud Services, Inc.",MEDHOST,core_ehr,same vendor; portal products only (see core_products)
+"MEDHOST, Inc.",MEDHOST,core_ehr,alias
+Altera Digital Health Inc.,Altera Digital Health,core_ehr,formerly Allscripts hospital business (Sunrise / Paragon); dbMotion is ancillary
+Altera Digital Health,Altera Digital Health,core_ehr,alias
+"Allscripts Healthcare, LLC",Altera Digital Health,core_ehr,alias (hospital products moved to Altera in 2022)
+Allscripts,Altera Digital Health,core_ehr,alias
+"athenahealth, Inc.",athenahealth,core_ehr,athenaClinicals for Hospitals (ex-RazorInsights)
+athenahealth,athenahealth,core_ehr,alias
+NextGen Healthcare,NextGen Healthcare,core_ehr,mostly Mirth/Direct in hospitals; Enterprise EHR is core
+"eClinicalWorks, LLC",eClinicalWorks,core_ehr,
+eClinicalWorks,eClinicalWorks,core_ehr,alias
+Azalea Health,Azalea Health,core_ehr,
+Indian Health Service,Indian Health Service (RPMS),core_ehr,RPMS EHR for IHS/tribal hospitals
+Sabiamed Corporation,Sabiamed,core_ehr,ClinNext (Puerto Rico)
+"Infomedika, Inc.",Infomedika,core_ehr,Evolution EHR (Puerto Rico)
+OpenEMR Foundation,OpenEMR,core_ehr,
+"Greenway Health, LLC",Greenway Health,core_ehr,ambulatory; rarely a hospital system of record
+CompuGroup Medical US,CompuGroup Medical,core_ehr,CGM APRIMA / eMDs; ambulatory
+"MedOne Systems, LLC",MedOne,core_ehr,BOLT
+"CareCloud, Inc.",CareCloud,core_ehr,CareVue (ex-MTBC); ambulatory-leaning; seen via CHPL API only
+Veradigm,Veradigm,core_ehr,"Veradigm EHR (ambulatory) in the clinician PUF; FollowMyHealth portal in hospital bundles, where no hospital-year depends on its tier (checked 2026-09-27)"
+HCA Healthcare - Information Technology Group,HCA Healthcare (internal),ancillary,HCA's own modules layered on MEDITECH
+Intermountain Health,Intermountain Health (internal),ancillary,self-developed public-health reporting modules
+"CHSPSC, LLC",CHSPSC (internal),ancillary,Community Health Systems internal PULSE module
+Picis PulseCheck,Picis,ancillary,ED information system
+"Medisolv, Inc.",Medisolv,ancillary,eCQM
+"Premier Healthcare Solutions, Inc.",Premier,ancillary,eCQM / analytics
+"Inpriva, Inc.",Inpriva,ancillary,Direct messaging
+Secure Exchange Solutions,Secure Exchange Solutions,ancillary,Direct messaging
+VigiLanz Corporation,VigiLanz,ancillary,antimicrobial / infection surveillance
+"Surescripts, LLC",Surescripts,ancillary,eRx network
+Imprivata,Imprivata,ancillary,access / privacy monitoring
+"Imprivata Inc. (FKA Maize Analytics, Inc.)",Imprivata,ancillary,alias
+"InterOperability Bidco, Inc., d.b.a. Rhapsody",Rhapsody,ancillary,integration engine
+Commure,Commure,ancillary,
+Wolters Kluwer,Wolters Kluwer,ancillary,clinical decision support
+"Clinisys, Inc.",Clinisys,ancillary,lab (ex-Sunquest)
+Clinisys Inc.,Clinisys,ancillary,alias
+DrFirst,DrFirst,ancillary,eRx
+"Health Catalyst, Inc.",Health Catalyst,ancillary,analytics
+SCC Soft Computer,SCC Soft Computer,ancillary,lab
+MedAllies,MedAllies,ancillary,Direct messaging
+"Dynamic Health IT, Inc",Dynamic Health IT,ancillary,eCQM
+Persivia,Persivia,ancillary,
+"Iron Bridge Integration, Inc.",Iron Bridge,ancillary,public-health interfaces
+"Park Avenue Capital, LLC dba MaxMD",MaxMD,ancillary,Direct messaging
+Becton Dickinson and Company,BD,ancillary,infection surveillance (MedMined)
+"DataMotion, Inc.",DataMotion,ancillary,Direct messaging
+"Syntellis Performance Solutions, LLC",Syntellis,ancillary,
+"Iatric Systems, Inc",Iatric Systems,ancillary,MEDITECH add-ons
+agilon health inc.,agilon health,ancillary,
+Orion Health,Orion Health,ancillary,HIE
+Press Ganey Associates,Press Ganey,ancillary,
+Updox,Updox,ancillary,
+Consensus Cloud Solutions,Consensus Cloud Solutions,ancillary,eFax / Direct
+Bridge Patient Portal Inc.,Bridge Patient Portal,ancillary,
+Indiana Health Information Exchange,Indiana HIE,ancillary,
+Virtusa Corporation,Virtusa,ancillary,
+Varian Medical Systems,Varian,ancillary,oncology
+RosettaHealth,RosettaHealth,ancillary,Direct messaging
+Mayo Clinic Labs,Mayo Clinic Labs,ancillary,
+InterSystems Corporation,InterSystems,ancillary,HIE / integration
+EMR Direct,EMR Direct,ancillary,Direct messaging
+Rural Wisconsin Health Cooperative,Rural Wisconsin Health Cooperative,ancillary,
+"DSS, Inc.",DSS,ancillary,
+"Asolva, Inc.",Asolva,ancillary,
+"WellStack, INC",WellStack,ancillary,
+HixNY,HixNY,ancillary,HIE
+"Nuance Communications, Inc.",Nuance,ancillary,
+Florida Department of Health,Florida Department of Health,ancillary,
+InteliChart LLC,InteliChart,ancillary,portal
+"DynaMed, LLC",DynaMed,ancillary,
+Secure Health Information Technology Corp.,Secure Health IT,ancillary,
+DASON (Duke Antimicrobial Stewardship Outreach Network),DASON,ancillary,
+IDC Telemed,IDC Telemed,ancillary,
+"Xcelrate UDI, Inc.",Xcelrate UDI,ancillary,
+Tenzing Medical LLC,Tenzing Medical,ancillary,
+Darena Solutions LLC dba Darena Health,Darena Health,ancillary,
+"Amrita Ventures, LLC",Amrita Ventures,ancillary,
+"EPOWERdoc, Inc.",EPOWERdoc,ancillary,
+Net Health,Net Health,ancillary,
+Holy Name Medical Center,Holy Name Medical Center (internal),ancillary,self-developed
+Empower Systems,Empower Systems,ancillary,
+"EndoSoft, LLC",EndoSoft,ancillary,
+"iCare.com, Inc.",iCare,ancillary,
+"Abeo Solutions, Inc",Abeo Solutions,ancillary,
+PipelineRx,PipelineRx,ancillary,
+"VIPA Health Solutions, LLC",VIPA Health Solutions,ancillary,
+MDinteractive,MDinteractive,ancillary,
+"1Life Healthcare, Inc",One Medical,ancillary,
+Tecurologic,Tecurologic,ancillary,
+Scientific Technologies Corporation,STC,ancillary,immunization registries
+Beth Israel Deaconess Medical Center,BIDMC (internal),ancillary,self-developed
+"Medical Office Technologies, Inc.",Medical Office Technologies,ancillary,
+Wellsky,WellSky,ancillary,post-acute
+"Health Care Systems, Inc.",Health Care Systems,ancillary,
+PRN Software (DoseSpot),DoseSpot,ancillary,eRx
+Henry Schein One,Henry Schein One,ancillary,dental
+Algo Health,Algo Health,ancillary,
+Modernizing Medicine Inc.,Modernizing Medicine,core_ehr,"EMA; specialty ambulatory EHR (derm, ophth, ortho, GI …)"
+"Modernizing Medicine Gastroenterology, LLC",Modernizing Medicine,core_ehr,gGastro
+Nextech,Nextech,core_ehr,specialty ambulatory EHR
+McKesson Specialty Health Technology Products LLC (Ontada),Ontada (iKnowMed),core_ehr,oncology practice EHR
+"IntrinsiQ Specialty Solutions, Inc. FBO Healthtronics Information Technology Solutions Inc.",IntrinsiQ (UroChart),core_ehr,urology practice EHR
+Practice Fusion,Practice Fusion,core_ehr,Veradigm-owned; small-practice EHR
+Flatiron Health,Flatiron Health,core_ehr,OncoEMR
+"medent - Community Computer Service, Inc.",MEDENT,core_ehr,
+"Raintree Systems, Inc.",Raintree,core_ehr,rehab / PT practice EHR
+"EyeMD EMR Healthcare Systems, Inc.",EyeMD EMR,core_ehr,ophthalmology
+"Eyefinity, Inc.",Eyefinity,core_ehr,optometry; EHR powered by ModMed EMA
+AdvancedMD,AdvancedMD,core_ehr,
+MDLAND,MDLand,core_ehr,iClinic
+Bizmatics Inc.,PrognoCIS,core_ehr,
+WRS Health,WRS Health,core_ehr,
+Systemedx Inc,Systemedx,core_ehr,
+"EZDERM, LLC",EZDERM,core_ehr,dermatology
+Compulink Healthcare Solutions,Compulink,core_ehr,eye care / specialty
+"Lille Group, Inc.",Lille Group,core_ehr,escribeHOST
+Criterions Software Inc,Criterions,core_ehr,
+PCIS GOLD,PCIS GOLD,core_ehr,
+drchrono Inc.,DrChrono,core_ehr,
+"Phoenix Ortho, LLC",Phoenix Ortho,core_ehr,orthopedics
+Netsmart Technologies,Netsmart,core_ehr,"myAvatar / myEvolv (behavioral health), GEHRIMED (LTC)"
+"eRAD, Inc.",eRAD,core_ehr,radiology RIS; system of record for radiology practices
+"Pulse Systems, Inc",Pulse Systems,core_ehr,
+iSALUS Healthcare,iSALUS,core_ehr,OfficeEMR
+"Tebra Technologies, Inc.",Tebra (Kareo),core_ehr,
+"GeniusDoc, Inc.",GeniusDoc,core_ehr,
+"Medflow EHR, LLC",Medflow,core_ehr,ophthalmology
+"MD Logic, Inc.",MD Logic,core_ehr,
+Infor-Med Medical Information Systems Inc.,Praxis EMR,core_ehr,
+AssureCare LLC,iPatientCare,core_ehr,
+MedPharm Services LLC,IMS (Meditab),core_ehr,Intelligent Medical Software
+eMedPractice LLC,eMedicalPractice,core_ehr,
+"CureMD.com, Inc.",CureMD,core_ehr,
+"WEBeDoctor, Inc.",WEBeDoctor,core_ehr,
+"Exscribe, LLC",Exscribe,core_ehr,orthopedics
+DOX EMR,DOX EMR,core_ehr,
+"Office Ally, LLC",Office Ally,core_ehr,EHR 24/7
+"Management Plus EHR, LLC",ManagementPlus,core_ehr,eye care
+"Harris CareTracker, Inc",Harris CareTracker,core_ehr,
+"CareTracker, Inc.",Amazing Charts,core_ehr,Harris-owned
+GEMMS,GEMMS,core_ehr,cardiology
+"EyeCare Partners, LLC",EyeCare Partners (internal),core_ehr,"EyeCare 360, group's own EHR"
+"MedConnect, Inc.",MedConnectHealth,core_ehr,
+Comtron Inc.,Medgen,core_ehr,
+"Picis Clinical Solutions, Inc",Medstreaming,core_ehr,vascular / practice suite
+Elekta Inc.,Elekta MOSAIQ,core_ehr,radiation oncology information system
+"DocToMe, Inc.",ethizo,core_ehr,
+"MD Office, LLC",MDoffice,core_ehr,
+"iMedicWare, LLC",iMedicWare,core_ehr,ophthalmology
+"Elation Health, Inc.",Elation Health,core_ehr,
+"Networking Technology Inc., dba RXNT",RXNT,core_ehr,
+"ChartPath, LLC",ChartPath,core_ehr,post-acute
+Prime Clinical Systems,Prime Clinical,core_ehr,Patient Chart Manager
+"Health Innovation Technologies, Inc.",RevolutionEHR,core_ehr,optometry
+"CareCloud Health, Inc.",CareCloud,core_ehr,alias
+Medical Informatics Engineering,WebChart (MIE),core_ehr,
+Braintree Health,Braintree Health,core_ehr,
+TriMed Technologies,TriMed,core_ehr,e-Medsys
+HCA Physician Services Group,HCA Healthcare (internal),ancillary,M.A.P. documentation module for HCA-employed physicians
+Verana Health,Verana Health,ancillary,specialty registry / quality measures
+FIGmd Inc. (an MRO Company),FIGmd,ancillary,Pegasus registry platform
+"Alpha II, LLC",Alpha II,ancillary,MIPS Accelerator
+Clinigence Health,Clinigence,ancillary,value improvement platform
+"Health Samurai, Inc.",Health Samurai,ancillary,Aidbox FHIR API module
+"Eye Care Leaders, LLC",Eye Care Leaders,ancillary,regulatory compliance platform (their EHRs certify under other names)
+"Sightview EHR Holdings, LLC",Sightview,ancillary,myCare Portal
+"Navigating Cancer, LLC",Navigating Cancer,ancillary,patient engagement
+"Vohra Wound Physicians Management, LLC",Vohra (internal),ancillary,group's own documentation & coding module
+PCE Systems,PCE Systems,ancillary,care management
+Equicare Health Incorporated,Equicare,ancillary,survivorship care plans
+"Qualifacts Systems, LLC",Qualifacts,core_ehr,behavioral health EHR (CareLogic / Credible / InSync); endpoint lists in Lantern (#19)
+"CPSI (Computer Programs and Systems), Inc.",TruBridge,core_ehr,MU-era name (CPSI System; Healthland products after 2016)
+"Siemens Medical Solutions USA, Inc.",Oracle Health,core_ehr,"MU-era name; Soarian / INVISION / MedSeries4, sold to Cerner 2015"
+"Cerner Health Services, Inc.",Oracle Health,core_ehr,MU-era alias (Siemens Soarian lineage)
+"Healthcare Management Systems, Inc.",MEDHOST,core_ehr,MU-era name; HMS acquired by MEDHOST
+"Reseller of MEDHOST EDIS v4.3 - Healthcare Management Systems, Inc.",MEDHOST,core_ehr,MU-era reseller listing; EDIS is not a core product
+McKesson,McKesson,core_ehr,MU-era; Horizon Clinicals (sunset 2018). Paragon is reassigned to Altera by product in mu_attestation
+QuadraMed Corporation,QuadraMed,core_ehr,MU-era; QCPR (Harris)
+QuadraMed Corp,QuadraMed,core_ehr,alias
+Harris QuadraMed,QuadraMed,core_ehr,alias (Opus Inpatient Clinicals)
+"Keane, Inc. Healthcare Solutions Division",Cantata Health (Optimum),core_ehr,MU-era; Optimum hospital system
+Cantata Health,Cantata Health (Optimum),core_ehr,alias
+Medsphere Systems Corporation,Medsphere,core_ehr,OpenVista (VistA-based) hospital EHR
+"RazorInsights, LLC",RazorInsights,core_ehr,ONE hospital EHR
+"eCareSoft, Inc.",eCareSoft,core_ehr,small-hospital EHR
+GE Healthcare,GE Healthcare,ancillary,MU-era; Centricity Perinatal is ancillary; Centricity Enterprise is core (core_products)
+Intermountain Healthcare,Intermountain Health (internal),ancillary,MU-era; self-developed HELP2 (core product) before the Cerner move
+"Sunquest Information Systems, Inc.",Clinisys,ancillary,MU-era lab
+"YourCareUniverse, Inc.",YourCareUniverse,ancillary,patient portal (ex-MEDHOST)
+"Iatric Systems, Inc.",Iatric Systems,ancillary,alias
+Community Health Systems,CHSPSC (internal),ancillary,MU-era name; PULSE
+"HCA Information Technology & Services, Inc.",HCA Healthcare (internal),ancillary,MU-era name; modules layered on MEDITECH
+Medisolv Inc,Medisolv,ancillary,alias
+"T-System, Inc.",T-System,ancillary,ED documentation
+"SymphonyCare, LLC",SymphonyCare,ancillary,portal
+Midas+ Solutions,Midas+,ancillary,quality / eCQM
+"ProMed Clinical Systems, LLC",ProMed Clinical Systems,ancillary,ED information system
+"veEDIS Clinical Systems, LLC",ProMed Clinical Systems,ancillary,alias
+"The Staywell Company, LLC",Staywell,ancillary,patient education
+HealthPort,HealthPort,ancillary,release of information
+Persivia Inc.,Persivia,ancillary,eCQM
+PatientSafe Solutions,PatientSafe Solutions,ancillary,medication administration
+"Encore, An emids Company",Encore (emids),ancillary,eCQM
+Picis,Picis,ancillary,ED / OR / critical care
+Optum Clinical Solutions (formerly Picis),Picis,ancillary,alias
+PatientKeeper,PatientKeeper,ancillary,physician charging / documentation
+Truven Health Analytics,Truven Health Analytics,ancillary,eCQM / surveillance
+Thomson Reuters (Healthcare) Inc.,Truven Health Analytics,ancillary,alias (pre-2012 name)
+"Acmeware, Inc",Acmeware,ancillary,MEDITECH reporting
+"Tenet Healthsystem Medical, Inc.",Tenet (internal),ancillary,self-developed modules
+Health Management Associates,HMA (internal),ancillary,self-developed modules
+"ExitCare, LLC",ExitCare,ancillary,discharge instructions
+Trinity Health,Trinity Health (internal),ancillary,self-developed modules
+Alere Analytics,Alere Analytics,ancillary,public-health lab reporting
+PeriGen,PeriGen,ancillary,perinatal
+"Summit Healthcare Services, Inc.",Summit Healthcare,ancillary,interfaces
+"NoMoreClipboard, LLC",NoMoreClipboard,ancillary,portal
+Orchard Software Corporation,Orchard Software,ancillary,lab
+EMRConnect,EMRConnect,ancillary,
+InterSystems Corp.,InterSystems,ancillary,alias
+Catholic Health Initiatives,CHI (internal),ancillary,self-developed modules
+Wellsoft Corporation,Wellsoft,ancillary,ED information system
+Institute for Health Metrics,Institute for Health Metrics,ancillary,eCQM
+"New Wave Software, Inc.",New Wave Software,ancillary,ED information system
+Corepoint Health,Corepoint Health,ancillary,integration engine
+ACL Laboratories,ACL Laboratories,ancillary,public-health lab reporting
+MRO Corporation,MRO,ancillary,release of information
+Datu Health,Datu Health,ancillary,
+"Medicity, Inc.",Medicity,ancillary,HIE
+dbMotion Inc.,dbMotion,ancillary,HIE (later Allscripts)
+"NantHealth, Inc.",NantHealth,ancillary,portal
+Dimensional Insight,Dimensional Insight,ancillary,eCQM / analytics
+"Healthwise, Incorporated",Healthwise,ancillary,patient education
+"Infor (US), Inc.",Infor,ancillary,integration engine (Cloverleaf)
+"Lawson Software Americas, Inc.",Infor,ancillary,alias (Cloverleaf)
+"FDB (First Databank, Inc.)",First Databank,ancillary,medication reconciliation
+"Design Clinicals, Inc.",First Databank,ancillary,MedsTracker (acquired by FDB)
+Interface People,Interface People,ancillary,eCQM
+"Hill-Rom Holdings, Inc.",Hill-Rom,ancillary,perinatal
+Philips (Healthcare),Philips,ancillary,perinatal
+"CareFusion Solutions, LLC",CareFusion,ancillary,medication administration
+"Callibra, Inc.",Callibra,ancillary,discharge
+"naviHealth, Inc.",naviHealth,ancillary,discharge
+"Premier, Inc",Premier,ancillary,alias
+Microsoft Corporation,Microsoft,ancillary,Amalga / HealthVault
+"Quantros, Inc.",Quantros,ancillary,quality reporting
+"Forerun, Inc.",Forerun,ancillary,ED information system
+CMR,CMR,ancillary,ED information system

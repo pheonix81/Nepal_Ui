@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ehr-atlas",
+  "compatibility_date": "2026-09-25",
+  "observability": { "enabled": true },
+  // Static site: the page rendered by `ehr-atlas export-ui`. Deploy with `npx wrangler deploy`.
+  "assets": { "directory": "web/dist" },
+  "routes": [
+    { "pattern": "ehr-atlas.com", "custom_domain": true },
+    { "pattern": "www.ehr-atlas.com", "custom_domain": true }
+  ]
+}

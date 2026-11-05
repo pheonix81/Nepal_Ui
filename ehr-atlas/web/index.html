@@ -1,0 +1,1219 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>EHR Atlas</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E %3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22#2a78d6%22/%3E %3Cpath d=%22M32 14v36M14 32h36%22 stroke=%22#fff%22 stroke-width=%2211%22 stroke-linecap=%22round%22/%3E %3Cg fill=%22#2a78d6%22 stroke=%22#fff%22 stroke-width=%223.5%22%3E %3Ccircle cx=%2232%22 cy=%2213%22 r=%225%22/%3E%3Ccircle cx=%2232%22 cy=%2251%22 r=%225%22/%3E%3Ccircle cx=%2213%22 cy=%2232%22 r=%225%22/%3E%3Ccircle cx=%2251%22 cy=%2232%22 r=%225%22/%3E %3C/g%3E %3Ccircle cx=%2232%22 cy=%2232%22 r=%224%22 fill=%22#2a78d6%22/%3E %3C/svg%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAADkUlEQVR4nMRXS0yTQRCe/VugtAVB3oi0GChQhGiiBsXHRUU9aSI3RKIGD0ajJzBcPOpJDR6IaKKJVzWcxCAm4MUEYxClgEGhvqA8ItDSltJ23dnalj4S/60FvuTPPv7dmW93Z2ZnlbAK+qvjaeok+zVKSDWhdAcQkg3xAKXTTOYAk/nWvqy+PXGnaN7/i/grxuah4xTIA0IgH9YQlMIvAvSC6VbFiwCBsubhWonQLlhPUHoCSZDCFnO6BpaGGJM8uXNTVBKc3pMOVVuTefvDNwc87f8NVqdXrgjfTrhopVLjXTpLJPnKER3nCqHyr3LE0e0pcLgiBerbJ2TLwKOmCaRBAgmqQQDl+Squ/Mv0MtTdG+cf1nfqkqE0NwmEwHRLrBAiUJiRwMvO9wtg+unkH9YR+qxEEES1xM5eJzJjZtHNy73FGkhQEP7tK9HyPsuCW0QUeoBOCYIY/O4Ah4tyAn2tBjxLbpR2l5f/E4UkOB7czNBHp5y8nposceWIz1PL4KUgDOEdQKx4qKw+ORDegXgjKoFNbGsrC1S8/F/8S1bIEaSpFXC3vgB2FakDfRjdxixOfvZ+lOWpIgRh36OmoEMpmb7iHFXARhDvxu1w5ckPWLB7ohNoPJDBlU8zV+sdscGhMi1kpypZkFFHKOwaXIS27hlev3wkC45VpcLuoshxq2Wh7IaazYF5EQTQtTxspXVtX2HW5oFMrQJeXzeAIsruoZCJWVegjgTCES6rh8mqKdGEEAgRjYq87JZwrPgs2s78HduxIlwWZW2FRELGKLL2X7rhbxi3JPM4b8hVcZ/Grd2WHT2+Z2iV3PfRbnBccU7kOFQWLqvHZIW+UVtgDDG2mAJLxG16fFEP+sxgTHeyFQxPOsAdtBtucKuNC4HGOjLpDLQxROM4VUJwxeY5F5xhN+aczROdACJRSeBgqRZ0jASe8RvG1uUOPQa09nCD62cW3njfDKKyIiIhDng1ZIV4QI6sDY+EMd0F0dxSEeNSYiJQmhsZCQ1R+uRAmDemZJokKSIl07I+4ZTMR4BaRCbENyWjFgkoDIhMiWdKhrqV/MkEUCt3DqZdY2zLkUBvawlLyQiksqA0yqKiaEqGuiX2HGtnQXpe7iS8ls93mKH7E/o3AQ/LhF5+tELTQ7NYSsZ0om4eJ8tbTKdY5RmsJyg9yZ5mndwLhm8an+NbDZ9LsMbgOnzvwk5sh9yNG/E8/wMAAP//uWvJhAAAAAZJREFUAwCi2ZuSX+wV5gAAAABJRU5ErkJggg==">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<meta name="description" content="Interactive map of U.S. hospitals and medical practices by EHR vendor, with beds, health systems, clinician-side vendors, FHIR endpoints, practice locations and patient-origin catchments, built from public CMS and ONC data.">
+<meta property="og:title" content="EHR Atlas">
+<meta property="og:description" content="U.S. hospitals and practices by EHR vendor, on a map.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    color-scheme: light;
+    --page: #f3f3ef;
+    --surface: #fafaf8;
+    --surface-2: #ffffff;
+    --land: #e4e3dc;
+    --land-hover: #d8d7cf;
+    --border-map: #c6c5bc;
+    --ink: #15160f;
+    --ink-2: #565752;
+    --ink-3: #85857e;
+    --hair: #dcdbd3;
+    --hair-2: #c7c6be;
+    --ring: rgba(21,22,15,.12);
+    --chip-on: #15160f;
+    --chip-on-ink: #fafaf8;
+    --warn-ink: #8a5300;
+    --warn-bg: #fff2d6;
+    --v1: #2a78d6; --v2: #eb6834; --v3: #1baf7a; --v4: #eda100;
+    --v5: #e87ba4; --v6: #008300; --v7: #4a3aa7;
+    --v8: #0f9bb0; --v9: #9a6b2f; --v10: #b3261e;
+    --v-other: #8b8a82;
+    --v-none: #b3b2aa;
+    --shadow: 0 8px 24px rgba(21,22,15,.12);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --page: #111210;
+      --surface: #161715;
+      --surface-2: #1d1e1b;
+      --land: #262824;
+      --land-hover: #30322d;
+      --border-map: #3d3f39;
+      --ink: #f1f0e9;
+      --ink-2: #b7b6ad;
+      --ink-3: #85857e;
+      --hair: #2b2c28;
+      --hair-2: #3d3f39;
+      --ring: rgba(255,255,255,.12);
+      --chip-on: #f1f0e9;
+      --chip-on-ink: #161715;
+      --warn-ink: #f0b95a;
+      --warn-bg: #2d2412;
+      --v1: #3987e5; --v2: #d95926; --v3: #199e70; --v4: #c98500;
+      --v5: #d55181; --v6: #008300; --v7: #9085e9;
+      --v8: #2ab3c8; --v9: #b98a4a; --v10: #d8453a;
+      --v-other: #8b8a82;
+      --v-none: #55564f;
+      --shadow: 0 8px 24px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --page: #111210;
+    --surface: #161715;
+    --surface-2: #1d1e1b;
+    --land: #262824;
+    --land-hover: #30322d;
+    --border-map: #3d3f39;
+    --ink: #f1f0e9;
+    --ink-2: #b7b6ad;
+    --ink-3: #85857e;
+    --hair: #2b2c28;
+    --hair-2: #3d3f39;
+    --ring: rgba(255,255,255,.12);
+    --chip-on: #f1f0e9;
+    --chip-on-ink: #161715;
+    --warn-ink: #f0b95a;
+    --warn-bg: #2d2412;
+    --v1: #3987e5; --v2: #d95926; --v3: #199e70; --v4: #c98500;
+    --v5: #d55181; --v6: #008300; --v7: #9085e9;
+    --v8: #2ab3c8; --v9: #b98a4a; --v10: #d8453a;
+    --v-other: #8b8a82;
+    --v-none: #55564f;
+    --shadow: 0 8px 24px rgba(0,0,0,.5);
+  }
+
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+  * { box-sizing: border-box; }
+  button, input, select { font: inherit; color: inherit; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric: tabular-nums; }
+
+  .app { display: flex; flex-direction: column; height: 100%; padding-inline: 16px; padding-block: 12px 10px; gap: 10px; }
+
+  /* Header */
+  .top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .top h1 { margin: 0; font-size: 18px; font-weight: 600; letter-spacing: -.01em; }
+  .top h1 span { color: var(--ink-3); font-weight: 400; margin-left: 8px; }
+  .top .count { color: var(--ink-2); font-size: 13px; }
+  .top .count strong { color: var(--ink); font-weight: 600; }
+  .top .meta { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .top .by { color: var(--ink-3); font-size: 13px; }
+  .top .by a { color: var(--ink-2); text-decoration: none; border-bottom: 1px solid var(--hair-2); }
+  .top .by a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  /* Filters */
+  .filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+  .filters input[type="search"], .filters select {
+    height: 32px; padding: 0 10px; border: 1px solid var(--hair-2); border-radius: 6px;
+    background: var(--surface-2); min-width: 0;
+  }
+  .filters input[type="search"] { width: 220px; }
+  .filters input[type="search"]:focus, .filters select:focus, .chip:focus-visible, .btn:focus-visible, .seg button:focus-visible, .pill:focus-visible {
+    outline: 2px solid var(--v1); outline-offset: 1px;
+  }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 7px; height: 28px; padding: 0 10px 0 8px;
+    border: 1px solid var(--hair-2); border-radius: 999px; background: var(--surface-2);
+    cursor: pointer; white-space: nowrap; font-size: 13px; color: var(--ink);
+  }
+  .chip .sw { width: 10px; height: 10px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 1.5px var(--surface-2) inset; }
+  .chip .n { color: var(--ink-3); font-size: 12px; }
+  .chip.off { opacity: .45; }
+  .chip.off .sw { background: transparent; box-shadow: 0 0 0 1.5px var(--c) inset; }
+  .chip.none .sw { background: transparent; box-shadow: 0 0 0 1.5px var(--v-none) inset; }
+  .chip.none.on .sw { background: var(--v-none); }
+  .chip .sw.sq { border-radius: 2px; }
+  .chip.layer { background: var(--surface); }
+  .chip.layer .sw { background: var(--ink-2); box-shadow: none; }
+  .chip.layer.off .sw { background: transparent; box-shadow: 0 0 0 1.5px var(--ink-3) inset; }
+  .layers { display: flex; gap: 6px; align-items: center; padding-right: 10px; border-right: 1px solid var(--hair-2); }
+  .pill {
+    display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 8px 0 10px;
+    border: 1px solid var(--ink); border-radius: 999px; background: var(--chip-on); color: var(--chip-on-ink);
+    cursor: pointer; font-size: 13px; white-space: nowrap; max-width: 320px;
+  }
+  .pill span { overflow: hidden; text-overflow: ellipsis; }
+  .pill[hidden] { display: none; }
+  .chip.toggle.on { border-color: var(--ink); background: var(--chip-on); color: var(--chip-on-ink); }
+  .chip.toggle.on .n { color: inherit; opacity: .75; }
+  .chip.toggle:disabled { cursor: default; opacity: .45; }
+  .pill b { font-weight: 600; }
+  .filters .spacer { flex: 1; }
+  .btn {
+    height: 30px; padding: 0 10px; border: 1px solid var(--hair-2); border-radius: 6px;
+    background: var(--surface-2); cursor: pointer; font-size: 13px;
+  }
+  .btn.sm { height: 26px; padding: 0 8px; font-size: 12px; }
+  .btn:hover, .chip:hover { border-color: var(--ink-3); }
+  .seg { display: inline-flex; border: 1px solid var(--hair-2); border-radius: 6px; overflow: hidden; background: var(--surface-2); }
+  .seg button { height: 30px; padding: 0 12px; border: 0; background: transparent; cursor: pointer; font-size: 13px; }
+  .seg button + button { border-left: 1px solid var(--hair-2); }
+  .seg button.on { background: var(--chip-on); color: var(--chip-on-ink); }
+  .seglabel { color: var(--ink-3); font-size: 12px; margin-right: -4px; }
+
+  /* Main */
+  .main { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 320px; gap: 12px; }
+  .stage { position: relative; min-height: 360px; background: var(--surface); border: 1px solid var(--hair); border-radius: 8px; overflow: hidden; }
+  .stage svg { display: block; width: 100%; height: 100%; }
+  .stage svg .state { fill: var(--land); stroke: var(--border-map); cursor: pointer; }
+  .stage svg .state:hover { fill: var(--land-hover); }
+  .stage svg .state.sel { fill: var(--land-hover); stroke: var(--ink-3); }
+  .stage svg .nation { fill: none; stroke: var(--border-map); }
+  .stage svg .pt { stroke: var(--surface); }
+  .stage svg .pt.none { fill: none; stroke: var(--v-none); }
+  .stage svg .pt.dim { opacity: .15; }
+  .stage svg .pt.p { fill-opacity: .85; }
+  .stage svg .pt.p.lo { fill-opacity: .45; stroke-opacity: .5; }
+  .chip.layer .sw.sq.lo { opacity: .5; }
+  .stage svg .pz { fill: none; stroke: var(--c); pointer-events: none; }
+  .stage svg .hi { fill: none; stroke: var(--ink); pointer-events: none; }
+  /* stroke widths are set as attributes so the zoom handler can scale them */
+  .stage svg .cz { fill: var(--c); fill-opacity: .35; stroke: var(--c); pointer-events: none; }
+  .stage svg .cl { stroke: var(--c); stroke-opacity: .3; fill: none; pointer-events: none; }
+  .stage svg .sysring { fill: none; stroke: var(--ink); stroke-dasharray: 2 1.5; pointer-events: none; }
+  .zoom { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 4px; }
+  .zoom button {
+    width: 30px; height: 30px; border: 1px solid var(--hair-2); border-radius: 6px; background: var(--surface-2);
+    cursor: pointer; font-size: 16px; line-height: 1; padding: 0; display: grid; place-items: center;
+  }
+  .zoom button.reset { font-size: 11px; }
+  .stage .hint { position: absolute; left: 10px; bottom: 8px; font-size: 12px; color: var(--ink-3); pointer-events: none; }
+  .sizekey { position: absolute; left: 10px; top: 10px; display: none; align-items: flex-end; gap: 10px; font-size: 11px; color: var(--ink-3); pointer-events: none; }
+  .sizekey.show { display: flex; }
+  .sizekey div { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .sizekey i { display: block; border-radius: 50%; background: var(--ink-3); opacity: .5; }
+
+  .tip {
+    position: absolute; pointer-events: none; z-index: 5; max-width: 300px;
+    background: var(--surface-2); border: 1px solid var(--hair-2); border-radius: 8px; box-shadow: var(--shadow);
+    padding: 8px 10px; font-size: 12.5px; line-height: 1.4; display: none;
+  }
+  .tip.show { display: block; }
+  .tip .t { font-weight: 600; font-size: 13px; }
+  .tip .s { color: var(--ink-2); }
+  .tip .v { display: flex; align-items: center; gap: 7px; margin-top: 4px; }
+  .tip .v i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; background: var(--c); }
+  .tip .v.none i { background: var(--v-none); }
+  .tip .v i.sq { width: 8px; height: 8px; border-radius: 2px; }
+  .tip .v b { font-weight: 600; }
+
+  /* Rail */
+  .rail { display: flex; flex-direction: column; gap: 12px; min-height: 0; overflow: auto; }
+  .card { background: var(--surface); border: 1px solid var(--hair); border-radius: 8px; padding: 12px 14px; }
+  .card h2 { margin: 0 0 8px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); }
+  .card h2 .unpin { float: right; border: 0; background: none; cursor: pointer; color: var(--ink-3); font-size: 11px; letter-spacing: 0; text-transform: none; padding: 0; }
+  .card h2 .unpin:hover { color: var(--ink); }
+  .bars { display: grid; grid-template-columns: auto 1fr auto; gap: 5px 8px; align-items: center; font-size: 13px; }
+  .bars .l { display: flex; align-items: center; gap: 7px; white-space: nowrap; }
+  .bars .l i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
+  .bars .n small { color: var(--ink-3); font-size: 11px; margin-left: 4px; }
+  .bars .l.none i { background: transparent; box-shadow: 0 0 0 1.5px var(--v-none) inset; }
+  .bars .b { height: 6px; background: var(--hair); border-radius: 3px; overflow: hidden; }
+  .bars .b i { display: block; height: 100%; width: var(--w); background: var(--c); border-radius: 3px; }
+  .bars .none .b i, .bars .b i.none { background: var(--v-none); }
+  .bars .n { text-align: right; color: var(--ink-2); font-size: 12px; }
+  .bars .n b { color: var(--ink); font-weight: 600; }
+  /* From → to (#29): moves among the hospitals that switched since their last MU attestation */
+  .flows { display: flex; flex-direction: column; gap: 2px; font-size: 13px; }
+  .flows p { margin: 0 0 6px; color: var(--ink-3); font-size: 12px; line-height: 1.4; }
+  .flow {
+    display: grid; grid-template-columns: minmax(0, 1fr) 14px minmax(0, 1fr) 3.4em; align-items: center; gap: 6px;
+    width: 100%; padding: 4px 6px; margin: 0 -6px; border: 0; border-radius: 6px; background: none;
+    font: inherit; color: var(--ink); text-align: left; cursor: pointer; box-sizing: content-box;
+  }
+  .flow:hover { background: var(--land); }
+  .flow.on { background: var(--chip-on); color: var(--chip-on-ink); }
+  .flow .v { display: inline-flex; align-items: center; gap: 6px; min-width: 0; }
+  .flow .v span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .flow .v i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
+  .flow .arr { color: var(--ink-3); }
+  .flow.on .arr { color: inherit; }
+  .flow .n { font-variant-numeric: tabular-nums; font-weight: 600; text-align: right; }
+  .flows .more { color: var(--ink-3); font-size: 12px; margin-top: 4px; }
+
+  .detail .name { font-weight: 600; font-size: 15px; line-height: 1.3; text-wrap: balance; }
+  .detail .sub { color: var(--ink-2); font-size: 13px; margin-top: 2px; }
+  .detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 10px 0 0; font-size: 13px; }
+  .detail dt { color: var(--ink-3); }
+  .detail dd { margin: 0; overflow-wrap: anywhere; }
+  .detail dd .muted { color: var(--ink-3); }
+  .detail .vend { display: inline-flex; align-items: center; gap: 7px; font-weight: 600; }
+  .detail .vend i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); }
+  .detail .vend i.sq { border-radius: 2px; }
+  .detail .vend.none i { background: transparent; box-shadow: 0 0 0 1.5px var(--v-none) inset; }
+  .detail .vend .yr { font-weight: 400; color: var(--ink-3); }
+  .detail .empty { color: var(--ink-3); font-size: 13px; }
+  .detail .hist { display: grid; grid-template-columns: max-content 1fr; gap: 2px 8px; }
+  .detail .hist .yrs { color: var(--ink-3); font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric: tabular-nums; font-size: 12px; }
+  .detail .hist .v { display: inline-flex; align-items: center; gap: 6px; }
+  .detail .hist .v i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
+  .detail .hist .gap { grid-column: 1 / -1; color: var(--ink-3); font-size: 12px; }
+  .detail .link { border: 0; background: none; padding: 0; color: inherit; cursor: pointer; text-decoration: underline; text-decoration-color: var(--hair-2); text-underline-offset: 2px; text-align: left; }
+  .detail .link:hover { text-decoration-color: var(--ink); }
+  .flag { display: inline-block; margin-top: 10px; padding: 5px 8px; border-radius: 6px; background: var(--warn-bg); color: var(--warn-ink); font-size: 12px; line-height: 1.35; }
+  .detail .others { display: flex; flex-wrap: wrap; gap: 4px; }
+  .detail .others span { padding: 1px 7px; border: 1px solid var(--hair-2); border-radius: 999px; font-size: 12px; color: var(--ink-2); }
+  .detail .section { margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--hair); font-size: 13px; }
+  .detail .section h3 { margin: 0 0 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); }
+  .detail .section p { margin: 0 0 6px; color: var(--ink-2); }
+  .detail .section .actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .detail .section label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+  .stars { letter-spacing: .04em; }
+
+  /* Table view */
+  .tablewrap { position: absolute; inset: 0; overflow: auto; display: none; }
+  .stage.table .tablewrap { display: block; }
+  .stage.table svg, .stage.table .zoom, .stage.table .hint, .stage.table .sizekey { display: none; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th, td { padding: 6px 10px; text-align: left; border-bottom: 1px solid var(--hair); white-space: nowrap; }
+  th { position: sticky; top: 0; background: var(--surface); font-weight: 600; font-size: 12px; color: var(--ink-2); cursor: pointer; user-select: none; }
+  th.sorted { color: var(--ink); }
+  th.sorted::after { content: " ↑"; }
+  th.sorted.desc::after { content: " ↓"; }
+  td.name { white-space: normal; min-width: 220px; }
+  td.num, th.num { text-align: right; }
+  tr:hover td { background: var(--land); }
+  td .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--c); margin-right: 7px; vertical-align: 0; }
+  td .dot.none { background: transparent; box-shadow: 0 0 0 1.5px var(--v-none) inset; }
+  td .dot.sq { border-radius: 2px; }
+  td.kind { color: var(--ink-3); font-size: 12px; }
+  .tablenote { padding: 8px 10px; color: var(--ink-3); font-size: 12px; }
+
+  .foot { color: var(--ink-3); font-size: 12px; line-height: 1.5; }
+  .foot a { color: inherit; }
+
+  @media (max-width: 860px) {
+    .app { height: auto; }
+    .main { grid-template-columns: 1fr; }
+    .stage { height: 62vh; }
+    .filters input[type="search"] { width: 100%; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .stage svg .state { transition: fill .12s; }
+  }
+</style>
+
+<div class="app">
+  <header class="top">
+    <h1>EHR Atlas <span>U.S. hospitals and practices by EHR vendor</span></h1>
+    <div class="meta">
+      <div class="count" id="count"></div>
+      <div class="by">by <a href="https://alexevans.tech/" target="_blank" rel="noopener">Alex Evans</a> · <a href="https://www.linkedin.com/in/alex-d-evans/" target="_blank" rel="noopener">LinkedIn</a></div>
+    </div>
+  </header>
+
+  <div class="filters" role="group" aria-label="Filters">
+    <div class="layers" id="layers" role="group" aria-label="Layers"></div>
+    <input type="search" id="q" placeholder="Search hospital, practice, city or system" aria-label="Search hospital, practice, city or system">
+    <select id="state" aria-label="State"><option value="">All states</option></select>
+    <select id="type" aria-label="Hospital type"><option value="">All hospital types</option></select>
+    <button type="button" class="chip toggle" id="switched" aria-pressed="false" disabled title="Loading vendor history…">Switched since 2016 <span class="n mono"></span></button>
+    <div class="legend" id="legend" aria-label="Vendor filter"></div>
+    <button class="pill" id="sysPill" type="button" hidden title="Remove the health-system filter"></button>
+    <span class="spacer"></span>
+    <span class="seglabel">Dot size</span>
+    <div class="seg" role="group" aria-label="Dot size">
+      <button type="button" id="sizeUniform" class="on" aria-pressed="true" title="Every hospital the same size">Uniform</button>
+      <button type="button" id="sizeBeds" aria-pressed="false" title="Hospital dot area proportional to beds (HCRIS cost report); practice square area proportional to clinicians">Size</button>
+    </div>
+    <button class="btn" id="clear" type="button">Clear filters</button>
+    <div class="seg" role="tablist">
+      <button type="button" id="viewMap" class="on" role="tab" aria-selected="true">Map</button>
+      <button type="button" id="viewTable" role="tab" aria-selected="false">Table</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="stage" id="stage">
+      <svg id="map" aria-label="Map of U.S. hospitals and practices colored by EHR vendor"></svg>
+      <div class="zoom">
+        <button type="button" id="zin" aria-label="Zoom in">+</button>
+        <button type="button" id="zout" aria-label="Zoom out">−</button>
+        <button type="button" id="zreset" class="reset" aria-label="Reset view">Reset</button>
+      </div>
+      <div class="sizekey" id="sizekey" aria-hidden="true"></div>
+      <div class="hint" id="hint">Scroll to zoom · drag to pan · click a state to focus it · click a dot (hospital) or square (practice) to pin it · click empty land to zoom out</div>
+      <div class="tip" id="tip" role="status" aria-live="polite"></div>
+      <div class="tablewrap" id="tablewrap"></div>
+    </div>
+
+    <aside class="rail">
+      <section class="card">
+        <h2 id="barsTitle">Vendors in selection</h2>
+        <div class="bars" id="bars"></div>
+      </section>
+      <section class="card" id="flowsCard" hidden>
+        <h2>From → to, since 2016</h2>
+        <div class="flows" id="flows"></div>
+      </section>
+      <section class="card detail" id="detail">
+        <h2>Hospital or practice</h2>
+        <div class="empty">Hover a dot or square to preview. Click to pin it here.</div>
+      </section>
+      <p class="foot" id="foot"></p>
+    </aside>
+  </div>
+</div>
+
+<script id="topo" type="application/json">__UI_TOPO__</script>
+<script id="data" type="application/json">__UI_DATA__</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+(async function () {
+  // Embedded by `ehr-atlas export-ui`; when opened straight from web/ (placeholders intact)
+  // fall back to fetching the files, so the template can be developed without re-rendering.
+  async function load(id, url) {
+    const t = document.getElementById(id).textContent.trim();
+    if (t && !t.startsWith('__')) return JSON.parse(t);
+    const r = await fetch(url); if (!r.ok) throw new Error(`${url}: HTTP ${r.status}`);
+    return r.json();
+  }
+  const [topo, raw] = await Promise.all([load('topo', 'us-states.topo.json'), load('data', '../data/processed/ui.json')]);
+  const K = raw.hospitals.keys;
+  const H = raw.hospitals.rows.map(r => { const o = { kind: 'h' }; K.forEach((k, i) => o[k] = r[i]); return o; });
+  // Practices (#18): MIPS groups matched to CMS Doctors & Clinicians organisations; squares on the map.
+  // src 'l' (#19): organisations known only from a vendor's FHIR endpoint list (ONC Lantern) — lower confidence, lighter squares, own layer.
+  const PK = raw.practices ? raw.practices.keys : [], LK = raw.lpractices ? raw.lpractices.keys : [];
+  const P = (raw.practices ? raw.practices.rows : []).map(r => { const o = { kind: 'p', src: 'd' }; PK.forEach((k, i) => o[k] = r[i]); return o; })
+    .concat((raw.lpractices ? raw.lpractices.rows : []).map(r => {
+      const o = { kind: 'p', src: 'l', mips: 0, groups: 0 }; LK.forEach((k, i) => o[k] = r[i]);
+      o.lv = o.vendor; o.solo = o.id.startsWith('ind:'); o.tie = false;
+      o.lm = { p: 'npi', z: 'name_zip', s: 'name_state', n: 'name', f: 'fuzzy_name_state' }[o.lm] || 'none';
+      return o;
+    }));
+  const isL = d => d.kind === 'p' && d.src === 'l';
+  const layerOf = d => d.kind === 'h' ? 'h' : isL(d) ? 'l' : 'p';
+  const nP = P.filter(d => !isL(d)).length, nL = P.length - nP;
+  const ALL = H.concat(P);
+  const SYS = raw.systems || {};
+  // Detail-card-only data (patient-origin ZIPs, practice locations, vendor history). The rendered page names a separate
+  // file in `raw.detail` and fetches it after the map is drawn; ui.json (dev) carries it inline.
+  let CATCH = (raw.catchment && raw.catchment.byCcn) || {}, ZIPS = raw.zips || {}, PLOCS = raw.plocs || {};
+  // Vendor history (#29): {vendors, byCcn: {ccn: [[first_year, last_year, vendor_index], …]}}, detail card only.
+  let HIST = raw.history || null;
+  let detailState = raw.detail ? 'loading' : 'ready';
+  const COV = raw.coverage || {}, PCOV = COV.practices || {}, LCOV = PCOV.lantern || {};
+
+  // ---- vendor slots: fixed order, never cycled ----
+  const SLOTS = [
+    ['Epic', 'var(--v1)'], ['Oracle Health', 'var(--v2)'], ['MEDITECH', 'var(--v3)'], ['TruBridge', 'var(--v4)'],
+    ['Altera Digital Health', 'var(--v5)'], ['MEDHOST', 'var(--v6)'], ['athenahealth', 'var(--v7)'],
+    // ambulatory vendors that only matter once practices are on the map
+    ['eClinicalWorks', 'var(--v8)'], ['Modernizing Medicine', 'var(--v9)'], ['NextGen Healthcare', 'var(--v10)'],
+  ];
+  const OTHER = 'Other vendor', NONE = 'No vendor data';
+  const slotOf = new Map(SLOTS.map(([v]) => [v, v]));
+  const colorOf = new Map(SLOTS.map(([v, c]) => [v, c]));
+  colorOf.set(OTHER, 'var(--v-other)'); colorOf.set(NONE, 'var(--v-none)');
+  const SLOT_ORDER = [...SLOTS.map(s => s[0]), OTHER, NONE];
+  // Search ignores case and punctuation, so "St. Jude" finds "ST JUDE" and "Children's" finds "CHILDRENS".
+  const norm = s => (s || '').toLowerCase().replace(/[.'’,]/g, '').replace(/[-/&]/g, ' ').replace(/\s+/g, ' ').trim();
+  ALL.forEach(h => {
+    h.slot = h.vendor ? (slotOf.get(h.vendor) || OTHER) : NONE;
+    h.sysName = h.sys && SYS[h.sys] ? SYS[h.sys][0] : null;
+    h.qText = [h.name, h.city, h.sysName].map(norm).join('|');
+  });
+  const isP = d => d.kind === 'p';
+  const sysCount = d3.rollup(H.filter(h => h.sys), v => v.length, h => h.sys);
+
+  const titleCase = s => s ? s.toLowerCase().replace(/\b[a-z]/g, m => m.toUpperCase()).replace(/\b(Of|And|The|At|For)\b/g, m => m.toLowerCase()) : s;
+  const nice = h => /[a-z]/.test(h.name) ? h.name : titleCase(h.name);
+  const niceCity = h => /[a-z]/.test(h.city || '') ? h.city : titleCase(h.city || '');
+  const fmt = d3.format(',');
+  const pct = x => `${Math.round(100 * x)}%`;
+
+  // ---- state ----
+  // Start with hospitals only; the practice layers are a click away on their chips.
+  const defaultLayers = () => new Set(['h']);
+  const hasP = () => F.layers.has('p') || F.layers.has('l');
+  const F = { q: '', state: '', type: '', sys: '', slots: new Set(SLOT_ORDER.filter(s => s !== NONE)), layers: defaultLayers(), view: 'map', size: 'uniform', catch: true, switched: false, flow: '' };
+  let pinned = null, hovered = null;
+
+  // ---- controls ----
+  const $ = id => document.getElementById(id);
+  const stateSel = $('state'), typeSel = $('type');
+  const states = [...new Set(ALL.map(h => h.state))].filter(Boolean).sort();
+  states.forEach(s => stateSel.append(new Option(s, s)));
+  const types = d3.rollups(H, v => v.length, h => h.type).sort((a, b) => b[1] - a[1]);
+  types.forEach(([t, n]) => typeSel.append(new Option(`${t || 'Unknown type'} (${fmt(n)})`, t || '')));
+
+  // layer chips: hospitals (dots) and practices (squares)
+  const layers = $('layers');
+  [['h', 'Hospitals', H.length, ''], ['p', 'Practices', nP, 'sq'], ['l', 'Endpoint-list practices', nL, 'sq lo']].forEach(([id, label, n, cls]) => {
+    if ((id === 'p' && !nP) || (id === 'l' && !nL)) return;
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip layer'; b.dataset.layer = id; b.setAttribute('aria-pressed', 'true');
+    const sw = document.createElement('i'); sw.className = 'sw ' + cls;
+    const lab = document.createElement('span'); lab.textContent = label;
+    const num = document.createElement('span'); num.className = 'n mono'; num.textContent = fmt(n);
+    b.append(sw, lab, num);
+    b.title = id === 'h' ? 'CMS hospitals with their inpatient EHR (dots)'
+      : id === 'p' ? 'MIPS practices from the ONC clinician file, matched to CMS Doctors & Clinicians organisations (squares)'
+      : 'Practices known only from a vendor\'s published FHIR endpoint list (ONC Lantern): vendor not attested, placed at a ZIP centroid — lower confidence (lighter squares)';
+    b.addEventListener('click', () => {
+      if (F.layers.has(id)) { if (F.layers.size > 1) F.layers.delete(id); } else F.layers.add(id);
+      update();
+    });
+    layers.append(b);
+  });
+  const legend = $('legend');
+  SLOT_ORDER.forEach(s => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip' + (s === NONE ? ' none' : ''); b.dataset.slot = s;
+    b.style.setProperty('--c', colorOf.get(s));
+    b.setAttribute('aria-pressed', 'true');
+    const sw = document.createElement('i'); sw.className = 'sw';
+    const lab = document.createElement('span'); lab.textContent = s;
+    const n = document.createElement('span'); n.className = 'n mono';
+    b.append(sw, lab, n);
+    b.title = s === NONE ? 'Hospitals outside the PI program or with no CEHRT ID' : `Click to show only ${s}. Click again to show all.`;
+    b.addEventListener('click', () => {
+      if (s === NONE) { F.slots.has(NONE) ? F.slots.delete(NONE) : F.slots.add(NONE); }
+      else {
+        const named = SLOT_ORDER.filter(x => x !== NONE);
+        const onlyThis = F.slots.size === 1 + (F.slots.has(NONE) ? 1 : 0) && F.slots.has(s);
+        const allNamedOn = named.every(x => F.slots.has(x));
+        if (allNamedOn) { named.forEach(x => F.slots.delete(x)); F.slots.add(s); }
+        else if (onlyThis) { named.forEach(x => F.slots.add(x)); }
+        else { F.slots.has(s) ? F.slots.delete(s) : F.slots.add(s); }
+      }
+      update();
+    });
+    legend.append(b);
+  });
+  function syncLegend() {
+    // chip counts follow the layers that are on, so the legend reads as a key for what is drawn
+    const inLayers = ALL.filter(d => F.layers.has(layerOf(d)));
+    const totalBySlot = d3.rollup(inLayers, v => v.length, h => h.slot);
+    legend.querySelectorAll('.chip').forEach(b => {
+      const on = F.slots.has(b.dataset.slot);
+      b.classList.toggle('off', !on); b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', String(on));
+      b.querySelector('.n').textContent = fmt(totalBySlot.get(b.dataset.slot) || 0);
+      b.hidden = b.dataset.slot !== NONE && !totalBySlot.get(b.dataset.slot);
+    });
+    layers.querySelectorAll('.chip').forEach(b => {
+      const on = F.layers.has(b.dataset.layer);
+      b.classList.toggle('off', !on); b.setAttribute('aria-pressed', String(on));
+    });
+    const pill = $('sysPill');
+    if (F.sys) {
+      pill.replaceChildren();
+      const s = document.createElement('span'); s.append('System: '); const b = document.createElement('b'); b.textContent = (SYS[F.sys] || [F.sys])[0]; s.append(b);
+      pill.append(s, document.createTextNode('✕')); pill.hidden = false;
+    } else pill.hidden = true;
+  }
+  $('sysPill').addEventListener('click', () => { F.sys = ''; update(); });
+
+  $('q').addEventListener('input', e => { F.q = norm(e.target.value); update(); });
+  stateSel.addEventListener('change', e => { F.state = e.target.value; update(); zoomToState(F.state); });
+  typeSel.addEventListener('change', e => { F.type = e.target.value; update(); });
+  $('clear').addEventListener('click', () => {
+    F.q = ''; F.state = ''; F.type = ''; F.sys = ''; $('q').value = ''; stateSel.value = ''; typeSel.value = '';
+    F.slots = new Set(SLOT_ORDER.filter(s => s !== NONE)); F.layers = defaultLayers(); F.switched = false; F.flow = ''; pinned = null; update(); resetZoom();
+  });
+  $('viewMap').addEventListener('click', () => setView('map'));
+  $('viewTable').addEventListener('click', () => setView('table'));
+  function setView(v) {
+    F.view = v;
+    $('stage').classList.toggle('table', v === 'table');
+    $('viewMap').classList.toggle('on', v === 'map'); $('viewMap').setAttribute('aria-selected', v === 'map');
+    $('viewTable').classList.toggle('on', v === 'table'); $('viewTable').setAttribute('aria-selected', v === 'table');
+    if (v === 'table') renderTable();
+  }
+  $('sizeUniform').addEventListener('click', () => setSize('uniform'));
+  $('sizeBeds').addEventListener('click', () => setSize('beds'));
+  function setSize(s) {
+    F.size = s;
+    $('sizeUniform').classList.toggle('on', s === 'uniform'); $('sizeUniform').setAttribute('aria-pressed', s === 'uniform');
+    $('sizeBeds').classList.toggle('on', s === 'beds'); $('sizeBeds').setAttribute('aria-pressed', s === 'beds');
+    $('sizekey').classList.toggle('show', s === 'beds');
+    applySize(); placeHi(); renderSys();
+  }
+
+  // ---- map ----
+  const svg = d3.select('#map');
+  const stage = $('stage');
+  const gRoot = svg.append('g');
+  const gStates = gRoot.append('g');
+  const gCatch = gRoot.append('g');
+  const gPP = gRoot.append('g');    // practices (squares) under hospitals (dots)
+  const gPts = gRoot.append('g');
+  const gSys = gRoot.append('g');
+  const hiCircle = gRoot.append('circle').attr('class', 'hi').attr('r', 0);
+  const nation = topojson.feature(topo, topo.objects.nation);
+  const stateFeats = topojson.feature(topo, topo.objects.states).features;
+  const FIPS = {"01":"AL","02":"AK","04":"AZ","05":"AR","06":"CA","08":"CO","09":"CT","10":"DE","11":"DC","12":"FL","13":"GA","15":"HI","16":"ID","17":"IL","18":"IN","19":"IA","20":"KS","21":"KY","22":"LA","23":"ME","24":"MD","25":"MA","26":"MI","27":"MN","28":"MS","29":"MO","30":"MT","31":"NE","32":"NV","33":"NH","34":"NJ","35":"NM","36":"NY","37":"NC","38":"ND","39":"OH","40":"OK","41":"OR","42":"PA","44":"RI","45":"SC","46":"SD","47":"TN","48":"TX","49":"UT","50":"VT","51":"VA","53":"WA","54":"WV","55":"WI","56":"WY","72":"PR"};
+  const projection = d3.geoAlbersUsa();
+  const path = d3.geoPath(projection);
+  let W = 0, Hh = 0, k = 1;
+
+  gStates.selectAll('path').data(stateFeats).join('path')
+    .attr('class', 'state')
+    .on('click', (e, d) => {
+      // A hospital dot under the cursor wins: the svg click handler pins it and the view stays put.
+      // Hit-test at the click itself: touch taps never hover, and pointerleave clears it before the click.
+      hovered = hitAt(e);
+      if (hovered) return;
+      // Zoomed in without a state filter (after pinning a dot): a click on empty land zooms back out.
+      if (!F.state && k > 1.2) { pin(null); resetZoom(); return; }
+      const abbr = FIPS[d.id]; if (!abbr) return;
+      F.state = F.state === abbr ? '' : abbr; stateSel.value = F.state; update(); zoomToState(F.state);
+    })
+    .append('title').text(d => d.properties.name);
+  gStates.append('path').datum(nation).attr('class', 'nation');
+
+  // ---- mark size: uniform, or area ∝ beds (hospitals) / clinicians (practices) ----
+  const BASE_R = 2.6, MIN_R = 1.3, BASE_RP = 2.1, MIN_RP = 1.1, BASE_RL = 1.6;
+  const maxBeds = d3.max(H, h => h.beds) || 1;
+  const rBeds = d3.scaleSqrt().domain([0, maxBeds]).range([0, 13]);
+  const maxClin = d3.max(P, p => p.clin) || 1;
+  const rClin = d3.scaleSqrt().domain([0, maxClin]).range([0, 11]);
+  // radius for hospitals, half-side for practice squares
+  const rOf = h => isP(h)
+    ? (F.size === 'beds' ? (h.clin ? Math.max(MIN_RP, rClin(h.clin)) : MIN_RP) : isL(h) ? BASE_RL : BASE_RP)
+    : (F.size === 'beds' ? (h.beds ? Math.max(MIN_R, rBeds(h.beds)) : MIN_R) : BASE_R);
+  // Big marks first so small ones stay clickable on top.
+  // Sort the data, not the selection: selection.sort reorders ~50k live DOM nodes.
+  const pts = gPts.selectAll('circle').data(H.slice().sort((a, b) => (b.beds || 0) - (a.beds || 0)), d => d.ccn).join('circle')
+    .attr('class', d => 'pt' + (d.slot === NONE ? ' none' : ''))
+    .attr('fill', d => d.slot === NONE ? 'none' : colorOf.get(d.slot))
+    .style('pointer-events', 'none');
+  const sqs = gPP.selectAll('rect').data(P.slice().sort((a, b) => (isL(a) - isL(b)) || (b.clin || 0) - (a.clin || 0)), d => d.id).join('rect')   // lower-confidence squares underneath
+    .attr('class', d => 'pt p' + (isL(d) ? ' lo' : ''))
+    .attr('fill', d => colorOf.get(d.slot))
+    .style('pointer-events', 'none');
+  function applySize() {
+    pts.attr('r', d => rOf(d) / Math.sqrt(k)).attr('stroke-width', 1 / k);
+    sqs.each(function (d) {
+      const r = rOf(d) / Math.sqrt(k);
+      this.setAttribute('x', d.x - r); this.setAttribute('y', d.y - r);
+      this.setAttribute('width', 2 * r); this.setAttribute('height', 2 * r);
+    }).attr('stroke-width', .8 / k);
+  }
+  (function sizeKey() {
+    const key = $('sizekey');
+    [25, 250, 1000].forEach(b => {
+      const d = document.createElement('div'); const i = document.createElement('i');
+      const px = 2 * rBeds(b); i.style.width = i.style.height = `${px}px`;
+      const l = document.createElement('span'); l.textContent = b === 1000 ? '1,000 beds' : b;
+      d.append(i, l); key.append(d);
+    });
+  })();
+
+  const zoom = d3.zoom().scaleExtent([1, 24]).on('zoom', e => {
+    k = e.transform.k; gRoot.attr('transform', e.transform);
+    applySize();
+    gStates.selectAll('.state').attr('stroke-width', .6 / k);
+    gStates.select('.nation').attr('stroke-width', .8 / k);
+    gCatch.selectAll('circle').attr('r', d => d.r / Math.sqrt(k)).attr('stroke-width', 1.2 / k);
+    gCatch.selectAll('rect').each(function (d) { const r = d.r / Math.sqrt(k); this.setAttribute('x', d.x - r); this.setAttribute('y', d.y - r); this.setAttribute('width', 2 * r); this.setAttribute('height', 2 * r); }).attr('stroke-width', 1.2 / k);
+    gCatch.selectAll('line').attr('stroke-width', .7 / k);
+    gSys.selectAll('circle').attr('r', d => (rOf(d) + 2.5) / Math.sqrt(k)).attr('stroke-width', 1 / k);
+    placeHi();
+  });
+  svg.call(zoom).on('dblclick.zoom', null);
+  $('zin').addEventListener('click', () => svg.transition().duration(250).call(zoom.scaleBy, 1.8));
+  $('zout').addEventListener('click', () => svg.transition().duration(250).call(zoom.scaleBy, 1 / 1.8));
+  $('zreset').addEventListener('click', resetZoom);
+  function resetZoom() { svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity); }
+  function fitBounds(b, pad = .85) {
+    if (!isFinite(b[0][0]) || !isFinite(b[1][0])) return;
+    const dx = Math.max(b[1][0] - b[0][0], 1), dy = Math.max(b[1][1] - b[0][1], 1), cx = (b[0][0] + b[1][0]) / 2, cy = (b[0][1] + b[1][1]) / 2;
+    const s = Math.max(1, Math.min(24, pad / Math.max(dx / W, dy / Hh)));
+    svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity.translate(W / 2 - s * cx, Hh / 2 - s * cy).scale(s));
+  }
+  function zoomToState(abbr) {
+    if (!abbr) return resetZoom();
+    const f = stateFeats.find(d => FIPS[d.id] === abbr); if (!f) return;
+    fitBounds(path.bounds(f));
+  }
+
+  let delaunay = null, visible = [];
+  function layout() {
+    const r = stage.getBoundingClientRect(); W = r.width; Hh = r.height;
+    svg.attr('viewBox', `0 0 ${W} ${Hh}`);
+    projection.fitExtent([[8, 8], [W - 8, Hh - 8]], nation);
+    gStates.selectAll('path').attr('d', path);
+    gStates.selectAll('.state').attr('stroke-width', .6 / k); gStates.select('.nation').attr('stroke-width', .8 / k);
+    ALL.forEach(h => { const p = (h.lat != null) ? projection([h.lon, h.lat]) : null; h.x = p ? p[0] : null; h.y = p ? p[1] : null; });
+    pts.attr('cx', d => d.x).attr('cy', d => d.y).attr('display', d => d.x == null ? 'none' : null);
+    sqs.attr('display', d => d.x == null ? 'none' : null);
+    applySize();
+    buildIndex();
+    renderCatch(); renderSys(); placeHi();
+  }
+  function buildIndex() {
+    visible = ALL.filter(h => h.show && h.x != null);
+    delaunay = visible.length ? d3.Delaunay.from(visible, d => d.x, d => d.y) : null;
+  }
+  function placeHi() {
+    const h = pinned || hovered;
+    if (!h || h.x == null || !h.show) { hiCircle.attr('r', 0); return; }
+    hiCircle.attr('cx', h.x).attr('cy', h.y).attr('r', (rOf(h) + 3) / Math.sqrt(k)).attr('stroke-width', 1.5 / k);
+  }
+
+  // ---- catchment overlay (patient origin ZIPs of the pinned hospital) ----
+  function catchOf(h) {
+    const c = h && CATCH[h.ccn]; if (!c) return null;
+    const rows = c[2].map(([zip, cases]) => { const z = ZIPS[zip]; const p = z ? projection([z[1], z[0]]) : null; return { zip, cases, x: p ? p[0] : null, y: p ? p[1] : null }; });
+    const shown = rows.reduce((a, r) => a + r.cases, 0);
+    return { total: c[0], nZips: c[1], rows, shown, placed: rows.filter(r => r.x != null) };
+  }
+  // secondary locations of a pinned practice (the primary one is its square)
+  function locsOf(p) {
+    const rows = (p && PLOCS[p.id]) || [];
+    const placed = rows.map(([lat, lon, n]) => { const q = projection([lon, lat]); return { n, x: q ? q[0] : null, y: q ? q[1] : null }; }).filter(r => r.x != null);
+    return { placed, total: p ? p.nloc : 0 };
+  }
+  function renderCatch() {
+    gCatch.selectAll('*').remove();
+    if (pinned && isP(pinned)) {
+      const l = F.catch ? locsOf(pinned) : null;
+      if (!l || !l.placed.length || pinned.x == null) { pts.classed('dim', false); sqs.classed('dim', false); return; }
+      const col = colorOf.get(pinned.slot);
+      const rs = d3.scaleSqrt().domain([0, d3.max(l.placed, r => r.n)]).range([0, 7]);
+      l.placed.forEach(r => r.r = Math.max(2, rs(r.n)));
+      gCatch.selectAll('line').data(l.placed).join('line').attr('class', 'cl').style('--c', col)
+        .attr('x1', pinned.x).attr('y1', pinned.y).attr('x2', d => d.x).attr('y2', d => d.y).attr('stroke-width', .7 / k);
+      gCatch.selectAll('rect').data(l.placed).join('rect').attr('class', 'pz').style('--c', col)
+        .each(function (d) { const r = d.r / Math.sqrt(k); this.setAttribute('x', d.x - r); this.setAttribute('y', d.y - r); this.setAttribute('width', 2 * r); this.setAttribute('height', 2 * r); })
+        .attr('stroke-width', 1.2 / k);
+      pts.classed('dim', true); sqs.classed('dim', d => d !== pinned);
+      return;
+    }
+    const c = pinned && F.catch ? catchOf(pinned) : null;
+    if (!c || !c.placed.length || pinned.x == null) { pts.classed('dim', false); sqs.classed('dim', false); return; }
+    const col = colorOf.get(pinned.slot);
+    const rs = d3.scaleSqrt().domain([0, d3.max(c.placed, r => r.cases)]).range([0, 18]);
+    c.placed.forEach(r => r.r = Math.max(2, rs(r.cases)));
+    gCatch.selectAll('line').data(c.placed).join('line').attr('class', 'cl').style('--c', col)
+      .attr('x1', pinned.x).attr('y1', pinned.y).attr('x2', d => d.x).attr('y2', d => d.y).attr('stroke-width', .7 / k);
+    gCatch.selectAll('circle').data(c.placed).join('circle').attr('class', 'cz').style('--c', col)
+      .attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => d.r / Math.sqrt(k)).attr('stroke-width', 1.2 / k);
+    pts.classed('dim', d => d !== pinned); sqs.classed('dim', true);
+  }
+  function fitCatch() {
+    if (pinned && isP(pinned)) {
+      const l = locsOf(pinned); if (!l.placed.length || pinned.x == null) return;
+      const xs = [pinned.x, ...l.placed.map(r => r.x)], ys = [pinned.y, ...l.placed.map(r => r.y)];
+      fitBounds([[d3.min(xs) - 10, d3.min(ys) - 10], [d3.max(xs) + 10, d3.max(ys) + 10]], .8);
+      return;
+    }
+    const c = pinned ? catchOf(pinned) : null; if (!c || !c.placed.length || pinned.x == null) return;
+    // Ignore the farthest tenth of ZIPs so one distant referral ZIP does not zoom the whole view out.
+    const byDist = c.placed.slice().sort((a, b) => Math.hypot(a.x - pinned.x, a.y - pinned.y) - Math.hypot(b.x - pinned.x, b.y - pinned.y));
+    const keep = byDist.slice(0, Math.max(5, Math.ceil(byDist.length * .9)));
+    const xs = [pinned.x, ...keep.map(r => r.x)], ys = [pinned.y, ...keep.map(r => r.y)];
+    fitBounds([[d3.min(xs) - 10, d3.min(ys) - 10], [d3.max(xs) + 10, d3.max(ys) + 10]], .8);
+  }
+
+  // ---- same-system rings ----
+  function renderSys() {
+    const sys = pinned && pinned.sys;
+    const peers = sys ? H.filter(h => h.sys === sys && h !== pinned && h.show && h.x != null) : [];
+    gSys.selectAll('circle').data(peers, d => d.ccn).join('circle').attr('class', 'sysring')
+      .attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => (rOf(d) + 2.5) / Math.sqrt(k)).attr('stroke-width', 1 / k);
+    return peers.length;
+  }
+
+  const tip = $('tip');
+  // Nearest visible point within its drawn radius (min 14px, or 24px for a finger).
+  function hitAt(e) {
+    if (!delaunay) return null;
+    const t = d3.zoomTransform(svg.node());
+    const [mx, my] = d3.pointer(e, svg.node());
+    const px = (mx - t.x) / t.k, py = (my - t.y) / t.k;
+    const h = visible[delaunay.find(px, py)];
+    if (!h) return null;
+    const min = e.pointerType === 'touch' ? 24 : 14;
+    const d = Math.hypot((h.x - px) * t.k, (h.y - py) * t.k);
+    return d <= Math.max(min, rOf(h) * Math.sqrt(t.k) + 4) ? h : null;
+  }
+  svg.on('pointermove', e => {
+    if (!delaunay) return;
+    const [mx, my] = d3.pointer(e, svg.node());
+    hovered = hitAt(e);
+    if (hovered) showTip(hovered, mx, my); else tip.classList.remove('show');
+    if (!pinned) renderDetail(hovered);
+    placeHi();
+  }).on('pointerleave', () => { hovered = null; tip.classList.remove('show'); if (!pinned) renderDetail(null); placeHi(); })
+    .on('click', e => {
+      hovered = hitAt(e);
+      if (e.target.classList.contains('state') && !hovered) return;
+      if (hovered) { pin(pinned === hovered ? null : hovered); }
+      else pin(null);
+    });
+  function pin(h) {
+    const fresh = h && h !== pinned && k < 1.5 && h.x != null;
+    pinned = h;
+    renderDetail(pinned || hovered); renderCatch(); renderSys(); placeHi();
+    // From the default view, zoom to the pinned hospital's state; later clicks keep the zoom.
+    if (fresh) zoomToState(h.state);
+  }
+  function showTip(h, x, y) {
+    tip.replaceChildren();
+    const t = document.createElement('div'); t.className = 't'; t.textContent = nice(h);
+    const s = document.createElement('div'); s.className = 's';
+    s.textContent = isL(h) ? `Practice (endpoint list) · ${niceCity(h) || '—'}, ${h.state || '—'}${h.spec ? ' · ' + titleCase(h.spec) : ''}`
+      : isP(h) ? `Practice · ${niceCity(h)}, ${h.state} · ${titleCase(h.spec || '') || 'specialty unknown'}` : `${niceCity(h)}, ${h.state} · ${h.type || 'Unknown type'}`;
+    const v = document.createElement('div'); v.className = 'v' + (h.slot === NONE ? ' none' : ''); v.style.setProperty('--c', colorOf.get(h.slot));
+    const i = document.createElement('i'); if (isP(h)) i.className = 'sq'; const b = document.createElement('b'); b.textContent = h.vendor || 'No vendor data';
+    v.append(i, b);
+    if (h.vendor && (isL(h) || h.vs === 'l')) { const y = document.createElement('span'); y.className = 's'; y.textContent = ' from its FHIR endpoint list'; v.append(y); }
+    else if (h.vendor && h.yr) { const y = document.createElement('span'); y.className = 's'; y.textContent = isP(h) ? ` ${pct(h.share || 0)} of clinicians, ${h.yr}` : h.rule === 'override' ? ` reported ${h.ovAt}` : ` ${h.yr}`; v.append(y); }
+    tip.append(t, s, v);
+    if (h.since) { const w = document.createElement('div'); w.className = 's'; w.textContent = `was ${h.since.vendor} in ${h.since.year}`; tip.append(w); }
+    const extra = isP(h)
+      ? [h.clin ? `${fmt(h.clin)} clinician${h.clin === 1 ? '' : 's'}` : null, h.nloc > 1 ? `${fmt(h.nloc)} locations` : null, isL(h) && h.lv !== h.vendor ? `also ${h.lv}` : null].filter(Boolean)
+      : [h.beds ? `${fmt(h.beds)} beds` : null, h.star ? `${h.star}★` : null, h.sysName].filter(Boolean);
+    if (extra.length) { const x2 = document.createElement('div'); x2.className = 's'; x2.textContent = extra.join(' · '); tip.append(x2); }
+    tip.classList.add('show');
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    let lx = x + 14, ly = y + 14;
+    if (lx + tw > W - 8) lx = x - tw - 14;
+    if (ly + th > Hh - 8) ly = y - th - 14;
+    tip.style.left = lx + 'px'; tip.style.top = ly + 'px';
+  }
+
+  // ---- detail card ----
+  const detail = $('detail');
+  const GEO = { r: 'Rooftop / street address (Census geocoder)', s: 'Street segment, approximate (Census geocoder)', z: 'ZIP-code centroid (address did not geocode)' };
+  function renderDetail(h) {
+    detail.replaceChildren();
+    const isPinned = pinned && h === pinned;
+    const what = !h ? 'Hospital or practice' : isL(h) ? 'Practice · endpoint list' : isP(h) ? 'Practice' : 'Hospital';
+    const h2 = document.createElement('h2'); h2.textContent = isPinned ? `${what} · pinned` : what;
+    if (isPinned) { const u = document.createElement('button'); u.type = 'button'; u.className = 'unpin'; u.textContent = 'Unpin ✕'; u.addEventListener('click', () => pin(null)); h2.append(u); }
+    detail.append(h2);
+    if (!h) { const e = document.createElement('div'); e.className = 'empty'; e.textContent = 'Hover a dot or square to preview. Click to pin it here.'; detail.append(e); return; }
+    if (isP(h)) return renderPractice(h, isPinned);
+    const name = document.createElement('div'); name.className = 'name'; name.textContent = nice(h);
+    const sub = document.createElement('div'); sub.className = 'sub'; sub.textContent = `${niceCity(h)}, ${h.state} ${h.zip || ''}`;
+    detail.append(name, sub);
+    const dl = document.createElement('dl');
+    const row = (k, node) => { const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); typeof node === 'string' ? dd.textContent = node : dd.append(node); dl.append(dt, dd); };
+    const muted = t => { const s = document.createElement('span'); s.className = 'muted'; s.textContent = t; return s; };
+    const frag = (...parts) => { const f = document.createDocumentFragment(); parts.forEach(p => f.append(p)); return f; };
+
+    const vend = document.createElement('span'); vend.className = 'vend' + (h.slot === NONE ? ' none' : ''); vend.style.setProperty('--c', colorOf.get(h.slot));
+    const vi = document.createElement('i'); const vt = document.createElement('span'); vt.textContent = h.vendor || 'No vendor data'; vend.append(vi, vt);
+    const ov = h.rule === 'override';
+    if (h.vendor && h.yr) { const y = document.createElement('span'); y.className = 'yr'; y.textContent = ov ? `reported ${h.ovAt}` : `calendar ${h.yr}`; vend.append(y); }
+    row('Inpatient EHR', vend);
+    row('Vendor history', histNode(h));
+    if (h.cv) row('Clinician-side', frag(h.cv, ' ', muted(`${pct(h.cvShare || 0)} of affiliated clinicians`)));
+    if (h.fhirN) {
+      const live = h.fhirLive ?? 0;
+      row('FHIR endpoints', frag(`${live} of ${h.fhirN} live`, ' ', muted([h.fhirV ? h.fhirV : 'vendor unknown', h.fhirAt ? `seen ${h.fhirAt}` : null].filter(Boolean).join(' · '))));
+    } else row('FHIR endpoints', muted('none matched'));
+    if (h.sys) {
+      const name = h.sysName || h.sys, n = sysCount.get(h.sys) || 0;
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'link'; b.textContent = name;
+      b.title = `Show only ${name} hospitals`;
+      b.addEventListener('click', () => { F.sys = h.sys; update(); });
+      row('Health system', frag(b, ' ', muted(`${fmt(n)} hospital${n === 1 ? '' : 's'} in the Atlas${isPinned && n > 1 ? ', ringed on the map' : ''}`)));
+    } else row('Health system', muted('independent / not in AHRQ Compendium'));
+    row('Beds', h.beds ? frag(fmt(h.beds), ' ', muted(h.bedsFy ? `cost report FY ${h.bedsFy}` : '')) : muted('no cost report'));
+    if (h.star) { const s = document.createElement('span'); s.className = 'stars'; s.textContent = '★'.repeat(h.star) + '☆'.repeat(5 - h.star); row('CMS star rating', frag(s, ' ', muted(`${h.star} of 5`))); }
+    else row('CMS star rating', muted('not rated'));
+    row('Type', h.type || '—');
+    row('Ownership', h.ownership || '—');
+    row('Location', GEO[h.geo] || 'Not geocoded; not on the map');
+    row('CCN', (() => { const s = document.createElement('span'); s.className = 'mono'; s.textContent = h.ccn; return s; })());
+    if (h.all) {
+      const others = (h.all.split('|')).filter(v => v !== h.vendor);
+      if (others.length) {
+        const wrap = document.createElement('div'); wrap.className = 'others';
+        others.forEach(o => { const s = document.createElement('span'); s.textContent = o; wrap.append(s); });
+        row('Also certified', wrap);
+      }
+    }
+    detail.append(dl);
+    const cores = h.core ? h.core.split('|') : [];
+    if (ov) flag(h.av ? `Manually corrected from ${h.ovSrc}: last attested ${h.av} in ${h.ay}.` : `Manually entered from ${h.ovSrc}: this hospital has no attested vendor.`);
+    else if (h.vendor && cores.length === 0) flag('No core-EHR vendor under this hospital’s CEHRT ID. Treat the vendor as unknown.');
+    else if (h.tie) flag(`Tie between ${cores.join(' and ')}. Picked alphabetically.`);
+    else if (cores.length > 1) flag(`Certified with ${cores.length} core-EHR vendors (${cores.join(', ')}). ${h.vendor} chosen by ${ruleText(h.rule)}.`);
+    if (h.cv && h.vendor && h.cv !== h.vendor) flag(`Affiliated clinicians mostly report ${h.cv}: the ambulatory side may run a different EHR, or the inpatient signal is stale.`);
+    function flag(txt) { const f = document.createElement('div'); f.className = 'flag'; f.textContent = txt; detail.append(f); }
+
+    if (isPinned) {
+      const sec = document.createElement('div'); sec.className = 'section';
+      const h3 = document.createElement('h3'); h3.textContent = `Patient origin · Medicare FFS ${raw.catchment && raw.catchment.year ? raw.catchment.year : ''}`; sec.append(h3);
+      const c = catchOf(h);
+      const p = document.createElement('p');
+      if (detailState !== 'ready') p.textContent = detailState === 'loading' ? 'Loading patient origin…' : 'Patient origin could not be loaded.';
+      else if (!c) p.textContent = 'No Hospital Service Area rows for this CCN.';
+      else {
+        p.textContent = `${fmt(c.total)} cases from ${fmt(c.nZips)} ZIP codes. Mapped: the top ${fmt(c.placed.length)} ZIPs, ${pct(c.shown / c.total)} of cases`
+          + (c.placed.length < c.rows.length ? ` (${c.rows.length - c.placed.length} without a centroid)` : '') + '. Circle area ∝ cases.';
+      }
+      sec.append(p);
+      if (c && c.placed.length) {
+        const act = document.createElement('div'); act.className = 'actions';
+        const lab = document.createElement('label'); const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = F.catch;
+        cb.addEventListener('change', () => { F.catch = cb.checked; renderCatch(); });
+        lab.append(cb, 'Show on map');
+        const fit = document.createElement('button'); fit.type = 'button'; fit.className = 'btn sm'; fit.textContent = 'Fit map to catchment';
+        fit.addEventListener('click', () => { if (!F.catch) { F.catch = true; cb.checked = true; renderCatch(); } fitCatch(); });
+        act.append(lab, fit); sec.append(act);
+      }
+      detail.append(sec);
+    }
+  }
+  // Attested primary vendor over time: Meaningful Use 2011–2016, PI 2023 on, nothing public in between.
+  function histNode(h) {
+    const muted = t => { const s = document.createElement('span'); s.className = 'muted'; s.textContent = t; return s; };
+    if (detailState !== 'ready') return muted(detailState === 'loading' ? 'loading…' : 'could not be loaded');
+    const runs = HIST && HIST.byCcn ? HIST.byCcn[h.ccn] : null;
+    if (!runs || !runs.length) return muted('no attestation on file');
+    const wrap = document.createElement('div'); wrap.className = 'hist';
+    const gap = (a, b) => {
+      const g = document.createElement('div'); g.className = 'gap';
+      const span = a === b ? `${a}` : `${a}–${b}`;
+      g.textContent = a >= 2017 && b <= 2022 ? `${span} · no public hospital data` : b <= 2016 ? `${span} · did not attest` : `${span} · no attestation on file`;
+      wrap.append(g);
+    };
+    const first = COV.history_first_year || 2011;
+    if (runs[0][0] > 2016 && first <= 2016) gap(first, 2016);
+    runs.forEach(([a, b, vi], i) => {
+      if (i && a - runs[i - 1][1] > 1) gap(runs[i - 1][1] + 1, a - 1);
+      const v = HIST.vendors[vi];
+      const y = document.createElement('span'); y.className = 'yrs'; y.textContent = a === b ? `${a}` : `${a}–${b}`;
+      const n = document.createElement('span'); n.className = 'v'; n.style.setProperty('--c', colorOf.get(slotOf.get(v) || OTHER));
+      const dot = document.createElement('i'); const t = document.createElement('span'); t.textContent = v; n.append(dot, t);
+      wrap.append(y, n);
+    });
+    return wrap;
+  }
+  const ruleText = r => ({ core_product: 'its inpatient system-of-record product', module_count: 'certified module count', vendor_tier: 'vendor tier', single_vendor: 'being the only vendor', alphabetical_tie: 'alphabetical tie-break' }[r] || r);
+
+  // practice detail card (#18): identity from CMS Doctors & Clinicians, vendor from the MIPS groups mapped to it;
+  // (#19) Lantern-only practices: identity from the endpoint list (or D&C when the name matched), vendor = the list's developer
+  const LM = { npi: 'matched by NPI', name_zip: 'matched by name and ZIP', name_state: 'matched by name within the state', name: 'matched by name (unique nationally)', fuzzy_name_state: 'matched by similar name within the state' };
+  function renderPractice(h, isPinned) {
+    const name = document.createElement('div'); name.className = 'name'; name.textContent = nice(h);
+    const sub = document.createElement('div'); sub.className = 'sub';
+    sub.textContent = `${niceCity(h) || ''}${h.city && h.state ? ', ' : ''}${h.state || ''} ${h.zip ? h.zip.slice(0, 5) : ''}`.trim();
+    detail.append(name, sub);
+    const dl = document.createElement('dl');
+    const row = (k, node) => { const dt = document.createElement('dt'); dt.textContent = k; const dd = document.createElement('dd'); typeof node === 'string' ? dd.textContent = node : dd.append(node); dl.append(dt, dd); };
+    const muted = t => { const s = document.createElement('span'); s.className = 'muted'; s.textContent = t; return s; };
+    const frag = (...parts) => { const f = document.createDocumentFragment(); parts.forEach(p => f.append(p)); return f; };
+    const mono = t => { const s = document.createElement('span'); s.className = 'mono'; s.textContent = t; return s; };
+    const seen = COV.fhir_observed ? ` · seen ${COV.fhir_observed}` : '';
+
+    const vend = document.createElement('span'); vend.className = 'vend'; vend.style.setProperty('--c', colorOf.get(h.slot));
+    const vi = document.createElement('i'); vi.className = 'sq'; const vt = document.createElement('span'); vt.textContent = h.vendor; vend.append(vi, vt);
+    if (isL(h)) {
+      // ---- Lantern-only practice ----
+      row('Ambulatory EHR', frag(vend, ' ', muted(`named in ${h.vendor}'s FHIR endpoint list · ${fmt(h.ln || 0)} endpoint${h.ln === 1 ? '' : 's'}${seen}`)));
+      if (h.all && h.all.split('|').length > 1) { const wrap = document.createElement('div'); wrap.className = 'others'; h.all.split('|').filter(v => v !== h.vendor).forEach(o => { const s = document.createElement('span'); s.textContent = o; wrap.append(s); }); row('Also listed by', wrap); }
+      if (h.clin) row('Clinicians', frag(fmt(h.clin), ' ', muted(h.solo ? 'solo enrollment' : h.members && h.members !== h.clin ? `published group size ${fmt(h.members)}` : 'in the CMS Doctors & Clinicians file')));
+      if (h.spec) {
+        const mix = (h.specs || '').split('|').map(x => x.split(':')).filter(x => x[0] !== h.spec).slice(0, 3).map(([sp, n]) => `${titleCase(sp)} ${n}`).join(', ');
+        row('Specialty', frag(titleCase(h.spec), ' ', muted(mix ? `also ${mix}` : '')));
+      }
+      if (h.nloc) row('Locations', frag(fmt(h.nloc), ' ', muted(h.nstates > 1 ? `in ${h.nstates} states` : '')));
+      row('Location', GEO[h.geo] || 'Not geocoded; not on the map');
+      if (h.lm && h.lm !== 'none') row('CMS record', frag(h.solo ? 'Clinician' : 'Group', ' ', mono(h.id.replace(/^\w+:/, '')), ' ', muted(`· ${LM[h.lm] || h.lm}`)));
+      else row('CMS record', muted('none matched'));
+      detail.append(dl);
+      const flag = txt => { const f = document.createElement('div'); f.className = 'flag'; f.textContent = txt; detail.append(f); };
+      flag(h.lm && h.lm !== 'none'
+        ? `Lower confidence: this practice does not report Promoting Interoperability, so the vendor comes only from ${h.vendor}'s published endpoint list, not an attestation.`
+        : `Lower confidence: known only from ${h.vendor}'s published endpoint list. It matched no CMS Doctors & Clinicians organisation, so the name and ZIP-centroid location are the list's own.`);
+      if (h.tie) flag(`Listed by ${(h.all || '').split('|').slice(0, 2).join(' and ')} with equal weight. Picked alphabetically.`);
+      renderPracticeLocations(h, isPinned);
+      return;
+    }
+    if (h.vs === 'l') row('Ambulatory EHR', frag(vend, ' ', muted(`from ${h.vendor}'s FHIR endpoint list · the practice's PI reporters named no core EHR${seen}`)));
+    else {
+      if (h.yr) { const y = document.createElement('span'); y.className = 'yr'; y.textContent = `PI ${h.yr}`; vend.append(y); }
+      row('Ambulatory EHR', frag(vend, ' ', muted(`attested by ${pct(h.share || 0)} of ${fmt(h.mips)} MIPS clinician${h.mips === 1 ? '' : 's'}`)));
+    }
+    if (h.lv && h.vs !== 'l') {
+      const same = h.lv === h.vendor;
+      row(same ? 'FHIR endpoints' : 'Also listed by', frag(same ? `${fmt(h.ln || 0)} listed by ${h.lv}` : h.lv, ' ', muted(same ? `· agrees${seen}` : `· ${fmt(h.ln || 0)} endpoint${h.ln === 1 ? '' : 's'} in its list${seen}`)));
+    }
+    row('Clinicians', frag(fmt(h.clin), ' ', muted(h.solo ? 'solo enrollment' : h.members && h.members !== h.clin ? `published group size ${fmt(h.members)}` : 'in the CMS Doctors & Clinicians file')));
+    if (h.spec) {
+      const mix = (h.specs || '').split('|').map(x => x.split(':')).filter(x => x[0] !== h.spec).slice(0, 3).map(([sp, n]) => `${titleCase(sp)} ${n}`).join(', ');
+      row('Specialty', frag(titleCase(h.spec), ' ', muted(mix ? `also ${mix}` : '')));
+    }
+    row('Locations', frag(fmt(h.nloc), ' ', muted(h.nstates > 1 ? `in ${h.nstates} states` : '')));
+    if (h.hosp != null) row('Hospital-affiliated', frag(pct(h.hosp), ' ', muted(h.hosp < .5 ? 'of clinicians · office-based' : 'of clinicians · hospital-based')));
+    row('MIPS groups', frag(fmt(h.groups), ' ', muted(h.match != null ? `· ${pct(h.match)} of the group's clinicians listed under this organisation` : '')));
+    row('Location', GEO[h.geo] || 'Not geocoded; not on the map');
+    row(h.solo ? 'Clinician PAC ID' : 'Group PAC ID', mono(h.id.replace(/^\w+:/, '')));
+    if (h.all) {
+      const others = h.all.split('|').filter(v => v !== h.vendor);
+      if (others.length) { const wrap = document.createElement('div'); wrap.className = 'others'; others.forEach(o => { const s = document.createElement('span'); s.textContent = o; wrap.append(s); }); row('Also attested', wrap); }
+    }
+    detail.append(dl);
+    const flag = txt => { const f = document.createElement('div'); f.className = 'flag'; f.textContent = txt; detail.append(f); };
+    if (h.tie) flag(`Tie between ${(h.all || '').split('|').slice(0, 2).join(' and ')}. Picked alphabetically.`);
+    else if (h.vs !== 'l' && (h.share || 0) < .6 && h.mips > 1) flag(`Only ${pct(h.share)} of the group's clinicians attested ${h.vendor}; the practice may run several EHRs.`);
+    if (h.lv && h.vs !== 'l' && h.lv !== h.vendor) flag(`${h.lv}'s FHIR endpoint list names this practice, but its clinicians attested ${h.vendor}. It may run both, or have switched since the ${h.yr || ''} attestation.`);
+    if (h.match != null && h.match < .5) flag(`Only ${pct(h.match)} of the MIPS group's clinicians are listed under this organisation. The name and address may belong to a related entity.`);
+    if (h.mips && h.clin && h.mips * 4 < h.clin) flag(`Vendor comes from ${fmt(h.mips)} of ${fmt(h.clin)} clinicians: the rest did not report Promoting Interoperability.`);
+    renderPracticeLocations(h, isPinned);
+  }
+  function renderPracticeLocations(h, isPinned) {
+    if (!isPinned) return;
+    const sec = document.createElement('div'); sec.className = 'section';
+    const h3 = document.createElement('h3'); h3.textContent = 'Other locations'; sec.append(h3);
+    const l = locsOf(h);
+    const p = document.createElement('p');
+    const src = isL(h) && (!h.lm || h.lm === 'none') ? 'in the endpoint list' : 'in the CMS file';
+    if (h.nloc <= 1) p.textContent = 'Single location.';
+    else if (detailState !== 'ready') p.textContent = `${fmt(h.nloc - 1)} other practice location${h.nloc === 2 ? '' : 's'} ${src}` + (detailState === 'loading' ? '; loading them…' : '; they could not be loaded.');
+    else p.textContent = `${fmt(h.nloc - 1)} other practice location${h.nloc === 2 ? '' : 's'} ${src}` + (l.placed.length ? `; the largest ${fmt(l.placed.length)} are drawn as hollow squares${isL(h) ? '' : ' (area ∝ clinicians)'}.` : '.');
+    sec.append(p);
+    if (l.placed.length) {
+      const act = document.createElement('div'); act.className = 'actions';
+      const lab = document.createElement('label'); const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = F.catch;
+      cb.addEventListener('change', () => { F.catch = cb.checked; renderCatch(); });
+      lab.append(cb, 'Show on map');
+      const fit = document.createElement('button'); fit.type = 'button'; fit.className = 'btn sm'; fit.textContent = 'Fit map to locations';
+      fit.addEventListener('click', () => { if (!F.catch) { F.catch = true; cb.checked = true; renderCatch(); } fitCatch(); });
+      act.append(lab, fit); sec.append(act);
+    }
+    detail.append(sec);
+  }
+
+  // ---- bars ----
+  function renderBars(rows) {
+    const bars = $('bars'); bars.replaceChildren();
+    const c = d3.rollup(rows, v => v.length, h => h.slot);
+    const cH = d3.rollup(rows.filter(r => !isP(r)), v => v.length, h => h.slot);
+    const both = F.layers.has('h') && hasP();
+    const withVendor = rows.filter(h => h.slot !== NONE).length;
+    const max = d3.max(SLOT_ORDER, s => c.get(s) || 0) || 1;
+    SLOT_ORDER.forEach(s => {
+      const n = c.get(s) || 0; if (!n && s !== NONE) return;
+      if (s === NONE && !F.slots.has(NONE) && !n) return;
+      const l = document.createElement('div'); l.className = 'l' + (s === NONE ? ' none' : ''); l.style.setProperty('--c', colorOf.get(s));
+      const i = document.createElement('i'); const t = document.createElement('span'); t.textContent = s; l.append(i, t);
+      const b = document.createElement('div'); b.className = 'b'; const bi = document.createElement('i'); bi.className = s === NONE ? 'none' : ''; bi.style.setProperty('--c', colorOf.get(s)); bi.style.setProperty('--w', (100 * n / max) + '%'); b.append(bi);
+      const num = document.createElement('div'); num.className = 'n mono';
+      const strong = document.createElement('b'); strong.textContent = fmt(n);
+      num.append(strong);
+      if (s !== NONE && withVendor) { num.append(document.createTextNode(` ${Math.round(100 * n / withVendor)}%`)); }
+      if (both && s !== NONE) { const sm = document.createElement('small'); sm.textContent = `${fmt(cH.get(s) || 0)}h`; sm.title = `${fmt(cH.get(s) || 0)} hospitals, ${fmt(n - (cH.get(s) || 0))} practices`; num.append(sm); }
+      bars.append(l, b, num);
+    });
+    const scope = F.layers.has('h') && hasP() ? 'hospitals and practices' : hasP() ? 'practices' : 'hospitals';
+    $('barsTitle').textContent = F.switched ? 'Switched to (vendor today)'
+      : (F.state || F.type || F.q || F.sys) ? 'Vendors in selection' : `Vendors, all ${scope}`;
+  }
+
+  // ---- table ----
+  let sortKey = 'name', sortDesc = false;
+  function renderTable() {
+    const rows = ALL.filter(h => h.show);
+    const wrap = $('tablewrap'); wrap.replaceChildren();
+    const both = F.layers.has('h') && hasP(), onlyP = !both && hasP();
+    // [key, label, class, value(row)]; hospitals and practices share the columns that make sense for both
+    const cols = [
+      ['name', both ? 'Name' : onlyP ? 'Practice' : 'Hospital', 'name', r => nice(r)],
+      both || F.layers.has('l') ? ['kind', 'Kind', 'kind', r => isL(r) ? 'Practice (endpoint list)' : isP(r) ? 'Practice' : 'Hospital'] : null,
+      ['city', 'City', '', r => niceCity(r)], ['state', 'State', '', r => r.state],
+      ['type', onlyP ? 'Top specialty' : both ? 'Type / specialty' : 'Type', '', r => isP(r) ? titleCase(r.spec || '') : r.type],
+      ['vendor', 'EHR vendor', 'vendor', r => r.vendor], ['yr', 'Year', '', r => r.yr],
+      F.switched ? ['was', 'Was', '', r => r.since ? `${r.since.vendor} (${r.since.year})` : ''] : null,
+      onlyP ? ['share', 'Share', 'num', r => r.share != null ? pct(r.share) : isL(r) || r.vs === 'l' ? 'list' : ''] : ['cv', 'Clinician-side', '', r => r.cv],
+      onlyP ? null : ['beds', 'Beds', 'num mono', r => r.beds ? fmt(r.beds) : ''],
+      both || onlyP ? ['clin', 'Clinicians', 'num mono', r => r.clin ? fmt(r.clin) : ''] : null,
+      both || onlyP ? ['nloc', 'Locations', 'num mono', r => r.nloc ? fmt(r.nloc) : ''] : null,
+      onlyP ? null : ['star', 'Stars', 'num', r => r.star ? `${r.star}★` : ''],
+      onlyP ? null : ['sysName', 'Health system', '', r => r.sysName],
+      onlyP ? ['all', 'All vendors attested', '', r => r.all ? r.all.replace(/\|/g, ', ') : ''] : ['core', 'Core vendors under CEHRT ID', '', r => r.core ? r.core.replace(/\|/g, ', ') : ''],
+      onlyP ? ['lv', 'Listed by (FHIR)', '', r => r.lv || ''] : null,
+    ].filter(Boolean);
+    if (!cols.some(c => c[0] === sortKey)) { sortKey = 'name'; sortDesc = false; }
+    const sorted = rows.slice().sort((a, b) => {
+      const av = a[sortKey], bv = b[sortKey];
+      if (av == null && bv == null) return 0; if (av == null) return 1; if (bv == null) return -1;
+      const r = typeof av === 'number' ? av - bv : String(av).localeCompare(String(bv));
+      return sortDesc ? -r : r;
+    });
+    const table = document.createElement('table');
+    const thead = document.createElement('thead'); const tr = document.createElement('tr');
+    cols.forEach(([kk, label, cls]) => {
+      const th = document.createElement('th'); th.textContent = label; th.scope = 'col';
+      th.className = (cls || '').replace(/\b(mono|name|vendor|kind)\b/g, '').trim() + (kk === sortKey ? ' sorted' : '') + (kk === sortKey && sortDesc ? ' desc' : '');
+      th.addEventListener('click', () => { if (sortKey === kk) sortDesc = !sortDesc; else { sortKey = kk; sortDesc = ['beds', 'star', 'clin', 'nloc', 'share'].includes(kk); } renderTable(); });
+      tr.append(th);
+    });
+    thead.append(tr); table.append(thead);
+    const tbody = document.createElement('tbody');
+    const LIMIT = 600;
+    sorted.slice(0, LIMIT).forEach(h => {
+      const r = document.createElement('tr');
+      cols.forEach(([kk, , cls, val]) => {
+        const c = document.createElement('td'); if (cls) c.className = cls;
+        if (kk === 'vendor') {
+          const dot = document.createElement('i'); dot.className = 'dot' + (h.slot === NONE ? ' none' : '') + (isP(h) ? ' sq' : ''); dot.style.setProperty('--c', colorOf.get(h.slot));
+          c.append(dot, document.createTextNode(h.vendor || 'No vendor data'));
+        } else c.textContent = val(h) ?? '';
+        r.append(c);
+      });
+      r.addEventListener('click', () => pin(h));
+      tbody.append(r);
+    });
+    table.append(tbody); wrap.append(table);
+    const note = document.createElement('div'); note.className = 'tablenote';
+    const noun = both ? 'hospitals and practices' : onlyP ? 'practices' : 'hospitals';
+    note.textContent = sorted.length > LIMIT ? `Showing the first ${fmt(LIMIT)} of ${fmt(sorted.length)} ${noun}. Narrow the filters to see the rest.` : `${fmt(sorted.length)} ${noun}. Click a column to sort, a row to pin it.`;
+    wrap.append(note);
+  }
+
+  // ---- footnote from the export's coverage figures ----
+  (function renderFoot() {
+    const g = COV.geo || {}, n = Object.values(g).reduce((a, b) => a + b, 0);
+    const street = (g.census_exact || 0) + (g.census_nonexact || 0), zipc = g.zip_centroid || 0, none = g.none || 0;
+    const parts = [
+      `Vendor is the primary certified EHR each hospital attested under the Medicare Promoting Interoperability program, latest year available (calendar ${COV.vendor_year || '2024'}). Psychiatric, VA, DoD, children's and rural emergency hospitals are not in that program and show as hollow rings. Vendor history on the detail card adds the Meaningful Use attestations of 2011–2016 (ONC); no public hospital-level source covers 2017–2022, and vendors are named by today's owner, so a Siemens or CPSI system reads as Oracle Health or TruBridge.`,
+      n ? `Locations: ${fmt(street)} of ${fmt(n)} CMS hospitals are placed at their street address by the Census geocoder, ${fmt(zipc)} at a ZIP-code centroid${none ? `, and ${fmt(none)} could not be placed` : ''}.` : '',
+      `Beds are from the latest HCRIS cost report; stars are the CMS overall hospital rating; the clinician-side vendor is what affiliated clinicians attested under PI; FHIR endpoints come from ONC Lantern${COV.fhir_observed ? ` (observed ${COV.fhir_observed})` : ''}; patient origin is the CMS Hospital Service Area file.`,
+      P.length ? (() => {
+        const pg = PCOV.geo || {}, ps = (pg.census_exact || 0) + (pg.census_nonexact || 0), pz = pg.zip_centroid || 0;
+        const l = nL ? ` Lighter squares are ${fmt(nL)} more practices known only from vendors' published FHIR endpoint lists (ONC Lantern${COV.fhir_observed ? `, ${COV.fhir_observed}` : ''}): ${fmt(LCOV.identified || 0)} of the ${fmt(LCOV.only || 0)} such organisations were identified in the Doctors & Clinicians file, ${fmt(LCOV.placed || 0)} have a ZIP to place them, and the rest are omitted here. Their vendor is not attested, so treat them as lower confidence. The lists also name ${fmt(LCOV.matched || 0)} of the MIPS practices, agreeing with the attested vendor for ${fmt(LCOV.agree || 0)}.` : '';
+        return `Practices (squares) are the ${fmt(PCOV.groups_matched || 0)} of ${fmt(PCOV.groups || 0)} MIPS reporting groups in the ONC clinician CEHRT file (PI ${PCOV.year || ''}) that match an organisation in the CMS Doctors & Clinicians file by clinician overlap, collapsed to ${fmt(nP)} practices with a vendor; each is placed at its largest location (${fmt(ps)} at a street address, ${fmt(pz)} at a ZIP centroid). Only clinicians who reported PI are in that file, so small practices are under-represented.` + l;
+      })() : '',
+      raw.generated ? `Exported ${raw.generated} by ehr-atlas export-ui.` : '',
+    ];
+    const foot = $('foot'); foot.textContent = parts.filter(Boolean).join(' ') + ' ';
+    const off = document.createElement('span'); off.id = 'offmap'; foot.append(off);
+  })();
+
+  // ---- update ----
+  function update() {
+    // hospital type and health-system filters can only match hospitals, so they hide practices
+    ALL.forEach(h => {
+      h.show = F.layers.has(layerOf(h)) && F.slots.has(h.slot)
+        && (!F.switched || (h.since && (!F.flow || flowKey(h) === F.flow)))
+        && (!F.state || h.state === F.state)
+        && (!F.type || h.type === F.type)
+        && (!F.sys || h.sys === F.sys)
+        && (!F.q || h.qText.includes(F.q));
+    });
+    pts.attr('display', d => (d.show && d.x != null) ? null : 'none');
+    sqs.attr('display', d => (d.show && d.x != null) ? null : 'none');
+    gStates.selectAll('.state').classed('sel', d => F.state && FIPS[d.id] === F.state);
+    const rows = ALL.filter(h => h.show);
+    const nH = rows.filter(r => !isP(r)).length, nP = rows.length - nH;
+    const withV = rows.filter(h => h.slot !== NONE).length;
+    const cnt = $('count'); cnt.replaceChildren();
+    const strong = t => { const b = document.createElement('strong'); b.textContent = t; return b; };
+    if (F.layers.has('h')) cnt.append(strong(fmt(nH)), document.createTextNode(` hospital${nH === 1 ? '' : 's'}`));
+    if (hasP()) cnt.append(document.createTextNode(F.layers.has('h') ? ' · ' : ''), strong(fmt(nP)), document.createTextNode(` practice${nP === 1 ? '' : 's'}`));
+    cnt.append(document.createTextNode(' shown · '), strong(fmt(withV)), document.createTextNode(' with a known vendor'));
+    const off = rows.filter(h => h.x == null).length;
+    $('offmap').textContent = off ? `${fmt(off)} of the shown hospitals and practices cannot be placed on this map (territories or no geocode) but appear in the table.` : '';
+    syncLegend(); renderBars(rows); renderFlows(rows); buildIndex();
+    if (pinned && !pinned.show) { pinned = null; }
+    renderDetail(pinned || hovered); renderCatch(); renderSys(); placeHi();
+    if (F.view === 'table') renderTable();
+  }
+
+  // ---- switched since 2016 (#29) ----
+  // `history.switched` (deferred file) lists hospitals whose vendor today differs from their last
+  // Meaningful Use attestation (2016 for most). The toggle keeps only those; the From → to card
+  // lists the moves among what is shown, and a move narrows the map to it.
+  const flowKey = h => `${h.since.vendor}→${h.vendor}`;
+  const swBtn = $('switched');
+  function initSwitched() {
+    const sw = HIST && HIST.switched;
+    if (!sw) { swBtn.hidden = true; return; }
+    let n = 0;
+    H.forEach(h => { const s = sw[h.ccn]; h.since = s ? { vendor: HIST.vendors[s[0]], year: s[1] } : null; if (s) n++; });
+    swBtn.querySelector('.n').textContent = fmt(n);
+    swBtn.disabled = false;
+    swBtn.title = 'Only hospitals whose EHR vendor today differs from their last Meaningful Use attestation (2011–2016, usually 2016). Each side must be a firm call: a core EHR product or the only vendor listed.';
+  }
+  swBtn.addEventListener('click', () => {
+    F.switched = !F.switched; F.flow = '';
+    // Switchers are hospitals; turn the hospital layer on if it was off.
+    if (F.switched && !F.layers.has('h')) F.layers.add('h');
+    update();
+  });
+  function renderFlows(rows) {
+    swBtn.classList.toggle('on', F.switched); swBtn.setAttribute('aria-pressed', String(F.switched));
+    const card = $('flowsCard'); card.hidden = !F.switched;
+    if (!F.switched) return;
+    const box = $('flows'); box.replaceChildren();
+    // Count over the other filters but not the selected move, so the list stays put while one is picked.
+    const base = H.filter(h => h.since && F.layers.has('h') && F.slots.has(h.slot)
+      && (!F.state || h.state === F.state) && (!F.type || h.type === F.type) && (!F.sys || h.sys === F.sys) && (!F.q || h.qText.includes(F.q)));
+    const flows = [...d3.rollup(base, v => v.length, flowKey)].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+    const p = document.createElement('p');
+    p.textContent = flows.length ? `${fmt(base.length)} hospitals run a different EHR today than at their last Meaningful Use attestation. Click a move to show only it.`
+      : 'No switched hospitals in this selection.';
+    box.append(p);
+    const vend = name => {
+      const s = document.createElement('span'); s.className = 'v'; s.style.setProperty('--c', colorOf.get(slotOf.get(name) || OTHER));
+      const i = document.createElement('i'); const t = document.createElement('span'); t.textContent = name; t.title = name; s.append(i, t); return s;
+    };
+    const TOP = 10;
+    flows.slice(0, TOP).forEach(([k, n]) => {
+      const [from, to] = k.split('→');
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'flow' + (F.flow === k ? ' on' : '');
+      b.setAttribute('aria-pressed', String(F.flow === k));
+      const arr = document.createElement('span'); arr.className = 'arr'; arr.textContent = '→';
+      const c = document.createElement('span'); c.className = 'n'; c.textContent = fmt(n);
+      b.append(vend(from), arr, vend(to), c);
+      b.addEventListener('click', () => { F.flow = F.flow === k ? '' : k; update(); });
+      box.append(b);
+    });
+    if (flows.length > TOP) {
+      const rest = flows.slice(TOP).reduce((a, [, n]) => a + n, 0);
+      const m = document.createElement('div'); m.className = 'more';
+      m.textContent = `+ ${fmt(rest)} hospitals in ${fmt(flows.length - TOP)} smaller moves`;
+      box.append(m);
+    }
+  }
+  if (HIST) initSwitched();
+
+  // ResizeObserver fires once on observe; skip it (and any no-op resize) rather than lay out twice.
+  const ro = new ResizeObserver(() => { const r = stage.getBoundingClientRect(); if (r.width !== W || r.height !== Hh) layout(); });
+  ro.observe(stage);
+  layout(); update();
+
+  if (raw.detail) {
+    // Let the map paint first, then fetch the pin-only data.
+    requestAnimationFrame(() => setTimeout(async () => {
+      try {
+        const r = await fetch(raw.detail); if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        const d = await r.json();
+        CATCH = d.catchment || {}; ZIPS = d.zips || {}; PLOCS = d.plocs || {}; HIST = d.history || null; detailState = 'ready';
+      } catch (err) { detailState = 'failed'; console.error(`${raw.detail}: ${err.message}`); }
+      if (detailState === 'ready') initSwitched(); else swBtn.hidden = true;
+      if (pinned) { renderDetail(pinned); renderCatch(); }
+      else if (hovered) renderDetail(hovered);
+    }));
+  }
+})().catch(err => {
+  const e = document.createElement('p'); e.style.cssText = 'padding:16px;color:#b00';
+  e.textContent = `EHR Atlas could not load its data: ${err.message}`; document.body.prepend(e);
+});
+</script>

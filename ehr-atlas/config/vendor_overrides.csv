@@ -1,0 +1,47 @@
+ccn,name,vendor,as_of,source,notes
+440049,Methodist Hospitals of Memphis,Epic,2026-10-04,user feedback,Methodist Le Bonheur went live on Epic at all sites in 2024 or 2025; clinicians already attest Epic
+250167,Methodist Healthcare - Olive Branch Hospital,Epic,2026-10-04,user feedback,Methodist Le Bonheur system-wide Epic go-live
+443302,St Jude Children's Research Hospital,Epic,2026-10-04,user feedback,Children's hospital outside the PI program; its FHIR endpoint is Epic
+200024,Central Maine Medical Center,Epic,2026-10-04,user feedback,Central Maine Healthcare moved from Oracle Health to Epic
+201306,Rumford Hospital,Epic,2026-10-04,user feedback,Central Maine Healthcare moved from Oracle Health to Epic
+201310,Bridgton Hospital,Epic,2026-10-04,user feedback,Central Maine Healthcare moved from Oracle Health to Epic
+450068,Memorial Hermann - Texas Medical Center,Epic,2026-10-04,user feedback,Memorial Hermann 100% Epic; clinicians already attest Epic
+450184,Memorial Hermann Hospital System,Epic,2026-10-04,user feedback,Memorial Hermann 100% Epic; clinicians already attest Epic
+450847,Memorial Hermann Katy Hospital,Epic,2026-10-04,user feedback,Memorial Hermann 100% Epic
+450610,Memorial Hermann Memorial City Hospital,Epic,2026-10-04,user feedback,Memorial Hermann 100% Epic
+450684,Memorial Hermann Northeast Hospital,Epic,2026-10-04,user feedback,Memorial Hermann 100% Epic
+450848,Memorial Hermann Sugar Land Hospital,Epic,2026-10-04,user feedback,Memorial Hermann 100% Epic
+190298,CHRISTUS Central Louisiana Surgical Hospital,Epic,2026-10-04,user feedback,CHRISTUS now 100% Epic
+191312,CHRISTUS Coushatta Health Care Center,Epic,2026-10-04,user feedback,CHRISTUS now 100% Epic
+450573,CHRISTUS Jasper Memorial Hospital,Epic,2026-10-04,user feedback,CHRISTUS now 100% Epic
+190201,CHRISTUS Ochsner Lake Area Hospital,Epic,2026-10-04,user feedback,CHRISTUS now 100% Epic
+190027,CHRISTUS Ochsner St Patrick Hospital,Epic,2026-10-04,user feedback,CHRISTUS now 100% Epic
+450237,CHRISTUS Santa Rosa Medical Center,Epic,2026-10-04,user feedback,CHRISTUS now 100% Epic
+190041,CHRISTUS Shreveport-Bossier Health System,Epic,2026-10-04,user feedback,CHRISTUS now 100% Epic
+450034,CHRISTUS Southeast Texas - St Elizabeth,Epic,2026-10-04,user feedback,CHRISTUS now 100% Epic
+190019,CHRISTUS St Frances Cabrini Hospital,Epic,2026-10-04,user feedback,CHRISTUS now 100% Epic
+320004,CHRISTUS Southern New Mexico,Epic,2026-10-04,user feedback,CHRISTUS now 100% Epic (AHRQ 2023 still lists it under Gerald Champion)
+453315,Children's Hospital of San Antonio,Epic,2026-10-04,user feedback,CHRISTUS-owned children's hospital outside the PI program; CHRISTUS now 100% Epic
+281331,Avera Creighton Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+431332,Avera De Smet Memorial Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+431331,Avera Dells Area Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+431310,Avera Flandreau Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+241343,Avera Granite Falls,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+431338,Avera Gregory Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+431337,Avera Hand County Memorial Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+430095,Avera Heart Hospital of South Dakota,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+161351,Avera Holy Family Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+241359,Avera Marshall Regional Medical Center,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+430016,Avera McKennan Hospital & University Health Center,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+161321,Avera Merrill Pioneer Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+431302,Avera Missouri River Health Center,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+431340,Avera Queen of Peace,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+430012,Avera Sacred Heart Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+281329,Avera St Anthony's Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+431330,Avera St Benedict Health Center,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+430014,Avera St Lukes,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+430015,Avera St Mary's Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+241348,Avera Tyler Hospital,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+431324,Avera Weskota Memorial Medical Center,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+431326,Milbank Area Hospital/Avera Health,Epic,2026-10-04,user feedback,Avera Health Epic migration in 2026
+170105,McPherson Hospital,MEDITECH,2026-10-04,user feedback,Migrated from TruBridge to MEDITECH in 2026; its FHIR endpoint is already MEDITECH

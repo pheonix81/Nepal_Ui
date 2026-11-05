@@ -1,0 +1,62 @@
+vendor,product_pattern,notes
+Epic,EpicCare Inpatient%,inpatient system of record
+Oracle Health,Oracle Health Millennium (Clinical)%,
+Oracle Health,Cerner Millennium%,older CHPL naming
+Oracle Health,%PowerChart%,Millennium clinical UI (incl. PowerChart Touch)
+Oracle Health,Soarian Clinicals%,Soarian (ex-Siemens) inpatient
+MEDITECH,%Core HCIS%,Expanse / 6.x / Client-Server / MAGIC core
+MEDITECH,%Electronic Health Record Core%,
+TruBridge,TruBridge EHR,
+TruBridge,TruBridge Provider EHR,
+TruBridge,Centriq%,ex-Healthland
+TruBridge,Evident%,
+TruBridge,Thrive%,
+MEDHOST,MEDHOST Enterprise%,Enterprise Clinicals/Financials/eRx
+Altera Digital Health,Sunrise Acute Care%,
+Altera Digital Health,Sunrise%,
+Altera Digital Health,Paragon%,
+athenahealth,athenaClinicals%,
+athenahealth,athenaOne%,
+NextGen Healthcare,NextGen Enterprise%,
+eClinicalWorks,eClinicalWorks%,
+Azalea Health,Azalea EHR%,
+Azalea Health,ChartAccess%,
+Indian Health Service (RPMS),Resource and Patient Management System%,
+Sabiamed,ClinNext%,
+Infomedika,Evolution EHR%,
+OpenEMR,OpenEMR%,
+MedOne,BOLT%,
+Greenway Health,Greenway Prime Suite%,
+CompuGroup Medical,CGM %,
+Oracle Health,Soarian EHR%,MU-era Siemens Soarian
+Oracle Health,INVISION%,MU-era Siemens INVISION
+Oracle Health,MedSeries4%,MU-era Siemens MedSeries4
+MEDITECH,%HCIS%,MU-era MAGIC / C/S / 6.x HCIS listings
+MEDITECH,MEDITECH Client/Server Electronic Health Record%,MU-era (not the MPM / ambulatory listings)
+MEDITECH,MEDITECH MAGIC Electronic Health Record%,MU-era
+MEDITECH,MEDITECH 6._ Electronic Health Record%,MU-era 6.0 / 6.1
+MEDITECH,MEDITECH Client/Server,MU-era bare platform listing
+MEDITECH,MEDITECH Magic,MU-era bare platform listing
+MEDITECH,Magic,MU-era bare platform listing
+MEDITECH,%HCA Core EHR%,MU-era MAGIC listing for HCA hospitals
+TruBridge,CPSI System%,MU-era CPSI
+TruBridge,Healthland Clinical Information System%,MU-era Healthland
+TruBridge,Healthland Centriq,MU-era Healthland
+MEDHOST,Enterprise,MU-era listing
+MEDHOST,MEDHOST Clinicals,MU-era listing
+MEDHOST,Clinicals,MU-era listing
+MEDHOST,"Healthcare Management Systems, Inc.",MU-era HMS hospital system
+MEDHOST,HMS with Patient Logic,MU-era HMS
+McKesson,Horizon Clinicals%,MU-era McKesson inpatient
+QuadraMed,QuadraMed Computerized Patient Record%,QCPR
+QuadraMed,Harris Opus Inpatient Clinicals%,
+NextGen Healthcare,NextGen Inpatient Clinicals%,ex-Opus Healthcare
+Cantata Health (Optimum),Optimum%,
+Medsphere,OpenVista%,
+RazorInsights,ONE - Electronic Health Record%,
+eCareSoft,eCS Inpatient EHR%,
+GE Healthcare,Centricity Enterprise%,
+Intermountain Health (internal),HELP2%,self-developed inpatient system before Cerner
+Health Care Systems,HCS eMR%,MU-era small-hospital EHR
+Empower Systems,empowersystems (inpatient)%,
+Empower Systems,Empower Inpatient%,

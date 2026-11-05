@@ -1,0 +1,15 @@
+ccn,name,expected_vendor,notes
+240010,Mayo Clinic Hospital Rochester,Epic,
+360180,Cleveland Clinic,Epic,
+210009,Johns Hopkins Hospital,Epic,
+220071,Massachusetts General Hospital,Epic,
+330101,NewYork-Presbyterian Hospital,Epic,
+050625,Cedars-Sinai Medical Center,Epic,
+450358,Houston Methodist Hospital,Epic,
+140281,Northwestern Memorial Hospital,Epic,
+460010,Intermountain Medical Center,Oracle Health,Cerner through 2024; Intermountain went live on Epic in 2025
+030002,Banner - University Medical Center Phoenix,Oracle Health,Banner is a long-time Cerner shop
+450647,Medical City Dallas Hospital,MEDITECH,HCA facility; HCA runs MEDITECH with its own hCare add-ons
+330195,Long Island Jewish Medical Center,Altera Digital Health,Northwell on Allscripts/Altera Sunrise through 2024; Epic go-live 2025
+390164,UPMC Presbyterian Shadyside,Oracle Health,UPMC inpatient is Cerner; ambulatory is Epic - expect both vendors to appear
+440039,Vanderbilt University Medical Center,Epic,
